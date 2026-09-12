@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<iframe id="f" src="/" width="1280" height="800" style="border:0"></iframe>
+<script>
+const iframe = document.getElementById('f');
+iframe.onload = () => {
+  setTimeout(() => {
+    const d = iframe.contentDocument;
+    const out = document.createElement('pre');
+    out.id = 'probe';
+    const r = (el) => el ? JSON.stringify({tag:el.tagName, cls:typeof el.className==='string'?el.className:null, rect:el.getBoundingClientRect()}) : 'NULL';
+    const topbar = d.querySelector('.topbar');
+    const container = d.querySelector('.topbar .container');
+    const preloader = d.querySelector('.preloader');
+    const elTop1 = d.elementFromPoint(640, 3);
+    const elTop2 = d.elementFromPoint(640, 8);
+    out.textContent = JSON.stringify({
+      scrollY: d.defaultView.scrollY,
+      docHeight: d.documentElement.scrollHeight,
+      topbar: r(topbar),
+      container: r(container),
+      containerComputedDisplay: container ? getComputedStyle(container).display : null,
+      containerAttrStyle: container ? container.getAttribute('style') : null,
+      preloaderStyle: preloader ? preloader.getAttribute('style') : null,
+      preloaderComputed: preloader ? getComputedStyle(preloader).display : null,
+      elAt3: r(elTop1),
+      elAt8: r(elTop2),
+      bodyChildren: [...d.body.children].map(c => ({cls:c.className, rect:c.getBoundingClientRect()})),
+    }, null, 2);
+    document.body.appendChild(out);
+  }, 4000);
+};
+</script>
+</body>
+</html>
