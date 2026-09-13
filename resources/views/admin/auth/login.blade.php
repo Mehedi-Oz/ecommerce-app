@@ -51,7 +51,7 @@
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" placeholder="Enter email"
                                             value="{{ old('email') }}" autocomplete="username" autofocus>
-                                        <x-input-error for="email" class="mt-2" />
+                                        <x-admin.input-error for="email" />
                                     </div>
 
                                     <div class="mb-3">
@@ -63,7 +63,7 @@
                                             <button class="btn btn-light" type="button" id="password-addon"><i
                                                     class="mdi mdi-eye-outline"></i></button>
                                         </div>
-                                        <x-input-error for="password" class="mt-2" />
+                                        <x-admin.input-error for="password" />
                                     </div>
 
                                     <div class="form-check">

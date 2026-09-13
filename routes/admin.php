@@ -33,6 +33,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
-    Route::get('/category/add', [CategoryController::class, 'index'])->name('category.add');
+    Route::get('/category/add', [CategoryController::class, 'create'])->name('category.add');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');
+    Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::patch('/category/{id}/status', [CategoryController::class, 'toggleStatus'])->name('category.status');
+    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });

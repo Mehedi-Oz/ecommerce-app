@@ -1,0 +1,31 @@
+/* ============================================================== */
+/* Custom admin styles                                            */
+/* ============================================================== */
+
+/* Truncated description with a show-more toggle */
+.description-clamp {
+    display: block;
+    max-width: 260px;
+    overflow: hidden;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.description-clamp.expanded {
+    white-space: normal;
+    word-break: break-word;
+}
+
+.description-toggle {
+    display: block;
+    margin-top: 2px;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #00c292;
+}
+
+.description-toggle:hover {
+    text-decoration: underline;
+}

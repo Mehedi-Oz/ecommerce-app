@@ -34,6 +34,13 @@
 <script src="{{ asset('assets/admin/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js') }}"></script>
 <script>
     $(function() {
-        $('#categoriesTable').DataTable();
+        $('.admin-data-table').DataTable({
+            ordering: false,
+            lengthChange: false,
+            searching: false,
+        });
     });
 </script>
+
+<!-- Custom admin scripts -->
+<script src="{{ asset('assets/admin/dist/js/custom.js') }}"></script>

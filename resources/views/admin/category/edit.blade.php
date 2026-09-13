@@ -3,5 +3,44 @@
 @section('title', 'Update Category')
 
 @section('content')
+    <div class="row">
+        <div class="col-lg-12 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Category</h4>
+                    <h6 class="card-subtitle">Edit the details below to update the category</h6>
+                    <form class="form-horizontal p-t-20" method="POST"
+                        action="{{ route('admin.category.update', $category->id) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
+                        <x-admin.input-text name="name" :label="__('Name')" placeholder="e.g. Electronics"
+                            :value="$category->name" required />
+
+                        <x-admin.input-text-area name="description" :label="__('Description')"
+                            placeholder="e.g. Mobile phones, laptops and accessories" :value="$category->description" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            @if ($category->image)
+                                <x-admin.image-preview :src="'storage/' . $category->image" class="mb-2" />
+                            @endif
+                            <input type="file" class="dropify" name="image"
+                                data-default-file="{{ $category->image ? asset('storage/' . $category->image) : '' }}" />
+                            <x-admin.input-error :for="'image'" />
+                        </div>
+
+                        <x-admin.input-select name="status" :label="__('Status')" :selected="old('status', $category->status)">
+                            <option value="published" @selected(old('status', $category->status) === 'published')>Published</option>
+                            <option value="unpublished" @selected(old('status', $category->status) === 'unpublished')>Unpublished</option>
+                        </x-admin.input-select>
+
+                        <div class="mt-3">
+                            <x-admin.submit-button :label="__('Update Category')" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

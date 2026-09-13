@@ -53,7 +53,7 @@
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" value="{{ old('email', $request->email) }}"
                                             autocomplete="email">
-                                        <x-input-error for="email" class="mt-2" />
+                                        <x-admin.input-error for="email" />
                                     </div>
 
                                     <div class="mb-3">
@@ -61,7 +61,7 @@
                                         <input type="password"
                                             class="form-control @error('password') is-invalid @enderror" id="password"
                                             name="password" autocomplete="new-password">
-                                        <x-input-error for="password" class="mt-2" />
+                                        <x-admin.input-error for="password" />
                                     </div>
 
                                     <div class="mb-3">

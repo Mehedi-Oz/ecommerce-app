@@ -4,15 +4,16 @@
 
 @section('content')
     <div class="row">
-        <div class="card">
+        <div class="card mt-3">
             <div class="card-body">
                 <h4 class="card-title">Manage Categories</h4>
                 <h6 class="card-subtitle">List of all categories</h6>
                 <div class="table-responsive m-t-40">
-                    <table id="categoriesTable" class="table table-striped table-bordered">
+                    <table class="table table-striped table-bordered admin-data-table">
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
@@ -21,18 +22,66 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>
-                                    <a href="#" title="Edit" class="btn btn-sm text-primary me-2"><i
-                                            class="fas fa-pencil-alt"></i></a>
-                                    <a href="#" title="Delete" class="btn btn-sm text-danger"><i class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
+                            @forelse ($categories as $category)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        @if ($category->image)
+                                            <x-admin.image-preview :src="'storage/' . $category->image"
+                                                style="width: 50px; height: 50px; object-fit: cover;" />
+                                        @else
+                                            <span class="text-muted">&mdash;</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>
+                                        @if ($category->description)
+                                            <span class="description-clamp" title="Click to expand">{{ $category->description }}</span>
+                                            <a href="javascript:void(0)" class="description-toggle" title="Toggle full description">Show more</a>
+                                        @else
+                                            <span class="text-muted">&mdash;</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($category->status === 'published')
+                                            <span class="badge bg-success text-white">Published</span>
+                                        @else
+                                            <span class="badge bg-warning text-dark">Unpublished</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $category->created_at->format('d/m/Y') }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.category.status', $category->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            @if ($category->status === 'published')
+                                                <button type="submit" title="Unpublish category"
+                                                    class="btn btn-sm text-success border-0 bg-transparent"><i
+                                                        class="fas fa-eye"></i></button>
+                                            @else
+                                                <button type="submit" title="Publish category"
+                                                    class="btn btn-sm text-muted border-0 bg-transparent"><i
+                                                        class="fas fa-eye-slash"></i></button>
+                                            @endif
+                                        </form>
+                                        <a href="{{ route('admin.category.edit', $category->id) }}" title="Edit"
+                                            class="btn btn-sm text-primary me-2"><i class="fas fa-pencil-alt"></i></a>
+                                        <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST"
+                                            class="d-inline" onsubmit="return confirm('Are you sure you want to delete this category?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" title="Delete"
+                                                class="btn btn-sm text-danger border-0 bg-transparent"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">No categories found</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

@@ -16,3 +16,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}">
 <link rel="stylesheet" type="text/css"
     href="{{ asset('assets/admin/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}">
+<!-- Custom admin styles -->
+<link rel="stylesheet" href="{{ asset('assets/admin/dist/css/custom.css') }}">

@@ -58,7 +58,7 @@
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" placeholder="Enter email"
                                             value="{{ old('email') }}" autocomplete="email" autofocus>
-                                        <x-input-error for="email" class="mt-2" />
+                                        <x-admin.input-error for="email" />
                                     </div>
 
                                     <div class="mt-3 d-grid">
