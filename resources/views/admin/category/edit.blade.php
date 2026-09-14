@@ -10,7 +10,7 @@
                     <h4 class="card-title">Update Category</h4>
                     <h6 class="card-subtitle">Edit the details below to update the category</h6>
                     <form class="form-horizontal p-t-20" method="POST"
-                        action="{{ route('admin.category.update', $category->id) }}" enctype="multipart/form-data">
+                        action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -23,10 +23,12 @@
                         <div class="mb-3">
                             <label class="form-label">Image</label>
                             @if ($category->image)
-                                <x-admin.image-preview :src="'storage/' . $category->image" class="mb-2" />
+                                <x-admin.image-preview :src="$category->image" class="mb-2" />
                             @endif
-                            <input type="file" class="dropify" name="image"
-                                data-default-file="{{ $category->image ? asset('storage/' . $category->image) : '' }}" />
+                            <div class="@error('image') is-dropify-invalid @enderror">
+                                <input type="file" class="dropify" name="image"
+                                    data-default-file="{{ $category->image ? asset($category->image) : '' }}" />
+                            </div>
                             <x-admin.input-error :for="'image'" />
                         </div>
 

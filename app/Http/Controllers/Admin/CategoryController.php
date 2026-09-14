@@ -7,12 +7,14 @@ use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Services\NotificationService;
+use App\Traits\FileUpload;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    use FileUpload;
+
     public function create(): View
     {
         return view('admin.category.create');
@@ -23,77 +25,70 @@ class CategoryController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('categories', 'public');
+            $data['image'] = $this->uploadFile($request->file('image'), 'categories');
         }
 
         Category::create($data);
         NotificationService::created();
 
-        return redirect()->route('admin.category.manage');
+        return redirect()->route('admin.categories.index');
     }
 
-    public function manage(): View
+    public function index(): View
     {
         $categories = Category::latest()->get();
 
-        return view('admin.category.manage', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
-    public function edit(string $id): View
+    public function edit(Category $category): View
     {
-        $category = Category::findOrFail($id);
-
         return view('admin.category.edit', compact('category'));
     }
 
-    public function update(CategoryUpdateRequest $request, string $id): RedirectResponse
+    public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
-        $category = Category::findOrFail($id);
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
             if ($category->image) {
-                Storage::disk('public')->delete($category->image);
+                $this->deleteFile($category->image);
             }
 
-            $data['image'] = $request->file('image')->store('categories', 'public');
+            $data['image'] = $this->uploadFile($request->file('image'), 'categories');
         }
 
         $category->fill($data);
 
         if (! $category->isDirty()) {
-            return redirect()->route('admin.category.edit', $category->id);
+            return redirect()->route('admin.categories.edit', $category);
         }
 
         $category->save();
         NotificationService::updated();
 
-        return redirect()->route('admin.category.manage');
+        return redirect()->route('admin.categories.index');
     }
 
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Category $category): RedirectResponse
     {
-        $category = Category::findOrFail($id);
-
         if ($category->image) {
-            Storage::disk('public')->delete($category->image);
+            $this->deleteFile($category->image);
         }
 
         $category->delete();
         NotificationService::deleted();
 
-        return redirect()->route('admin.category.manage');
+        return redirect()->route('admin.categories.index');
     }
 
-    public function toggleStatus(string $id): RedirectResponse
+    public function toggleStatus(Category $category): RedirectResponse
     {
-        $category = Category::findOrFail($id);
-
         $category->update([
             'status' => $category->status === 'published' ? 'unpublished' : 'published',
         ]);
         NotificationService::updated();
 
-        return redirect()->route('admin.category.manage');
+        return redirect()->route('admin.categories.index');
     }
 }

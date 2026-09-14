@@ -29,3 +29,13 @@
 .description-toggle:hover {
     text-decoration: underline;
 }
+
+/* Red border on the dropify file input when server-side validation fails */
+.is-dropify-invalid .dropify-wrapper {
+    border-color: #dc3545 !important;
+}
+
+.is-dropify-invalid .dropify-wrapper:focus,
+.is-dropify-invalid .dropify-wrapper:hover {
+    border-color: #dc3545 !important;
+}

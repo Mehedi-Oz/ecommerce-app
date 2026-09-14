@@ -1,19 +1,20 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Manage Categories')
+@section('title', 'Manage Subcategories')
 
 @section('content')
     <div class="row">
         <div class="card mt-3">
             <div class="card-body">
-                <h4 class="card-title">Manage Categories</h4>
-                <h6 class="card-subtitle">List of all categories</h6>
+                <h4 class="card-title">Manage Subcategories</h4>
+                <h6 class="card-subtitle">List of all subcategories</h6>
                 <div class="table-responsive m-t-40">
                     <table class="table table-striped table-bordered admin-data-table">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
+                                <th>Category</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
@@ -22,53 +23,54 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($categories as $category)
+                            @forelse ($subCategories as $subcategory)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        @if ($category->image)
-                                            <x-admin.image-preview :src="'storage/' . $category->image"
+                                        @if ($subcategory->image)
+                                            <x-admin.image-preview :src="$subcategory->image"
                                                 style="width: 50px; height: 50px; object-fit: cover;" />
                                         @else
                                             <span class="text-muted">&mdash;</span>
                                         @endif
                                     </td>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $subcategory->category?->name ?? '—' }}</td>
+                                    <td>{{ $subcategory->name }}</td>
                                     <td>
-                                        @if ($category->description)
-                                            <span class="description-clamp" title="Click to expand">{{ $category->description }}</span>
+                                        @if ($subcategory->description)
+                                            <span class="description-clamp" title="Click to expand">{{ $subcategory->description }}</span>
                                             <a href="javascript:void(0)" class="description-toggle" title="Toggle full description">Show more</a>
                                         @else
                                             <span class="text-muted">&mdash;</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($category->status === 'published')
+                                        @if ($subcategory->status === 'published')
                                             <span class="badge bg-success text-white">Published</span>
                                         @else
                                             <span class="badge bg-warning text-dark">Unpublished</span>
                                         @endif
                                     </td>
-                                    <td>{{ $category->created_at->format('d/m/Y') }}</td>
+                                    <td>{{ $subcategory->created_at->format('d/m/Y') }}</td>
                                     <td>
-                                        <form action="{{ route('admin.category.status', $category->id) }}" method="POST"
+                                        <form action="{{ route('admin.subcategories.status', $subcategory) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('PATCH')
-                                            @if ($category->status === 'published')
-                                                <button type="submit" title="Unpublish category"
+                                            @if ($subcategory->status === 'published')
+                                                <button type="submit" title="Unpublish subcategory"
                                                     class="btn btn-sm text-success border-0 bg-transparent"><i
                                                         class="fas fa-eye"></i></button>
                                             @else
-                                                <button type="submit" title="Publish category"
+                                                <button type="submit" title="Publish subcategory"
                                                     class="btn btn-sm text-muted border-0 bg-transparent"><i
                                                         class="fas fa-eye-slash"></i></button>
                                             @endif
                                         </form>
-                                        <a href="{{ route('admin.category.edit', $category->id) }}" title="Edit"
+                                        <a href="{{ route('admin.subcategories.edit', $subcategory) }}" title="Edit"
                                             class="btn btn-sm text-primary me-2"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST"
-                                            class="d-inline" onsubmit="return confirm('Are you sure you want to delete this category?')">
+                                        <form action="{{ route('admin.subcategories.destroy', $subcategory) }}" method="POST"
+                                            class="d-inline" onsubmit="return confirm('Are you sure you want to delete this subcategory?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" title="Delete"
@@ -79,7 +81,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">No categories found</td>
+                                    <td colspan="8" class="text-center">No subcategories found</td>
                                 </tr>
                             @endforelse
                         </tbody>
