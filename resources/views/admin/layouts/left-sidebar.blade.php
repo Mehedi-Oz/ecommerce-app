@@ -31,25 +31,40 @@
                                 class="@if (request()->routeIs('admin.subcategories.*') && ! request()->routeIs('admin.subcategories.create')) active @endif">Manage</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-medall"></i><span class="hide-menu">Brand</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Manage</a></li>
+                <li class="@if (request()->routeIs('admin.brands.*')) active @endif"> <a
+                        class="has-arrow waves-effect waves-dark @if (request()->routeIs('admin.brands.*')) active @endif"
+                        href="javascript:void(0)" aria-expanded="false"><i class="ti-medall"></i><span
+                            class="hide-menu">Brand</span></a>
+                    <ul aria-expanded="false"
+                        class="collapse @if (request()->routeIs('admin.brands.*')) in @endif">
+                        <li><a href="{{ route('admin.brands.create') }}"
+                                class="@if (request()->routeIs('admin.brands.create')) active @endif">Add</a></li>
+                        <li><a href="{{ route('admin.brands.index') }}"
+                                class="@if (request()->routeIs('admin.brands.*') && ! request()->routeIs('admin.brands.create')) active @endif">Manage</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-ruler-pencil"></i><span class="hide-menu">Unit</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Manage</a></li>
+                <li class="@if (request()->routeIs('admin.units.*')) active @endif"> <a
+                        class="has-arrow waves-effect waves-dark @if (request()->routeIs('admin.units.*')) active @endif"
+                        href="javascript:void(0)" aria-expanded="false"><i class="ti-ruler-pencil"></i><span
+                            class="hide-menu">Unit</span></a>
+                    <ul aria-expanded="false"
+                        class="collapse @if (request()->routeIs('admin.units.*')) in @endif">
+                        <li><a href="{{ route('admin.units.create') }}"
+                                class="@if (request()->routeIs('admin.units.create')) active @endif">Add</a></li>
+                        <li><a href="{{ route('admin.units.index') }}"
+                                class="@if (request()->routeIs('admin.units.*') && ! request()->routeIs('admin.units.create')) active @endif">Manage</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-package"></i><span class="hide-menu">Product</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Manage</a></li>
+                <li class="@if (request()->routeIs('admin.products.*')) active @endif"> <a
+                            class="has-arrow waves-effect waves-dark @if (request()->routeIs('admin.products.*')) active @endif"
+                        href="javascript:void(0)" aria-expanded="false"><i class="ti-package"></i><span
+                            class="hide-menu">Product</span></a>
+                    <ul aria-expanded="false"
+                        class="collapse @if (request()->routeIs('admin.products.*')) in @endif">
+                        <li><a href="{{ route('admin.products.create') }}"
+                                class="@if (request()->routeIs('admin.products.create')) active @endif">Add</a></li>
+                        <li><a href="{{ route('admin.products.index') }}"
+                                class="@if (request()->routeIs('admin.products.*') && ! request()->routeIs('admin.products.create')) active @endif">Manage</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i

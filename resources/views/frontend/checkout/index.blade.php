@@ -287,7 +287,8 @@
                                                     <div class="form-input form">
                                                         <input id="credit-input" type="text"
                                                             placeholder="0000 0000 0000 0000">
-                                                        <img src="{{ asset('assets/frontend/images/payment/card.png') }}" alt="card">
+                                                        <img src="{{ asset('assets/frontend/images/payment/card.png') }}"
+                                                            alt="card">
                                                     </div>
                                                 </div>
                                                 <div class="payment-card-info">

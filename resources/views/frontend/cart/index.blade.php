@@ -55,11 +55,12 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img src="{{ asset('assets/frontend/images/cart/01.jpg') }}" alt="#"></a>
+                            <a href="{{ route('product-details') }}"><img
+                                    src="{{ asset('assets/frontend/images/cart/01.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-<h5 class="product-name"><a href="{{ route('product-details') }}">
-                                        Canon EOS M50 Mirrorless Camera</a></h5>
+                            <h5 class="product-name"><a href="{{ route('product-details') }}">
+                                    Canon EOS M50 Mirrorless Camera</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Mirrorless</span>
                                 <span><em>Color:</em> Black</span>
@@ -92,11 +93,12 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img src="{{ asset('assets/frontend/images/cart/02.jpg') }}" alt="#"></a>
+                            <a href="{{ route('product-details') }}"><img
+                                    src="{{ asset('assets/frontend/images/cart/02.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-<h5 class="product-name"><a href="{{ route('product-details') }}">
-                                        Apple iPhone X 256 GB Space Gray</a></h5>
+                            <h5 class="product-name"><a href="{{ route('product-details') }}">
+                                    Apple iPhone X 256 GB Space Gray</a></h5>
                             <p class="product-des">
                                 <span><em>Memory:</em> 256 GB</span>
                                 <span><em>Color:</em> Space Gray</span>
@@ -129,10 +131,12 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img src="{{ asset('assets/frontend/images/cart/03.jpg') }}" alt="#"></a>
+                            <a href="{{ route('product-details') }}"><img
+                                    src="{{ asset('assets/frontend/images/cart/03.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="{{ route('product-details') }}">HP LaserJet Pro Laser Printer</a></h5>
+                            <h5 class="product-name"><a href="{{ route('product-details') }}">HP LaserJet Pro Laser
+                                    Printer</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Laser</span>
                                 <span><em>Color:</em> White</span>

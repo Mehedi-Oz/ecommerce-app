@@ -53,28 +53,32 @@
                                     </td>
                                     <td>{{ $subcategory->created_at->format('d/m/Y') }}</td>
                                     <td>
+                                        <a href="{{ route('admin.subcategories.edit', $subcategory) }}" title="Edit"
+                                            class="btn btn-sm btn-primary text-white me-1"
+                                            style="width: 32px; height: 32px;"><i class="fas fa-pencil-alt"></i></a>
                                         <form action="{{ route('admin.subcategories.status', $subcategory) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('PATCH')
                                             @if ($subcategory->status === 'published')
                                                 <button type="submit" title="Unpublish subcategory"
-                                                    class="btn btn-sm text-success border-0 bg-transparent"><i
-                                                        class="fas fa-eye"></i></button>
+                                                    class="btn btn-sm btn-warning text-white me-1"
+                                                    style="width: 32px; height: 32px;"><i
+                                                        class="fas fa-toggle-on"></i></button>
                                             @else
                                                 <button type="submit" title="Publish subcategory"
-                                                    class="btn btn-sm text-muted border-0 bg-transparent"><i
-                                                        class="fas fa-eye-slash"></i></button>
+                                                    class="btn btn-sm btn-success text-white me-1"
+                                                    style="width: 32px; height: 32px;"><i
+                                                        class="fas fa-toggle-off"></i></button>
                                             @endif
                                         </form>
-                                        <a href="{{ route('admin.subcategories.edit', $subcategory) }}" title="Edit"
-                                            class="btn btn-sm text-primary me-2"><i class="fas fa-pencil-alt"></i></a>
                                         <form action="{{ route('admin.subcategories.destroy', $subcategory) }}" method="POST"
                                             class="d-inline" onsubmit="return confirm('Are you sure you want to delete this subcategory?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" title="Delete"
-                                                class="btn btn-sm text-danger border-0 bg-transparent"><i
+                                                class="btn btn-sm btn-danger text-white"
+                                                style="width: 32px; height: 32px;"><i
                                                     class="fas fa-trash"></i></button>
                                         </form>
                                     </td>

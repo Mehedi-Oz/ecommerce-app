@@ -45,7 +45,8 @@
                             <h3>All Categories</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="{{ route('product-category') }}">Computers & Accessories </a><span>(1138)</span>
+                                    <a href="{{ route('product-category') }}">Computers & Accessories
+                                    </a><span>(1138)</span>
                                 </li>
                                 <li>
                                     <a href="{{ route('product-category') }}">Smartphones & Tablets</a><span>(2356)</span>
@@ -206,10 +207,11 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-1.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-1.jpg') }}"
+                                                    alt="#">
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -236,11 +238,12 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}"
+                                                    alt="#">
                                                 <span class="sale-tag">-25%</span>
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -268,10 +271,11 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-3.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-3.jpg') }}"
+                                                    alt="#">
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -298,11 +302,12 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-4.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-4.jpg') }}"
+                                                    alt="#">
                                                 <span class="new-tag">New</span>
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -329,10 +334,11 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-5.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-5.jpg') }}"
+                                                    alt="#">
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -359,10 +365,11 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-6.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-6.jpg') }}"
+                                                    alt="#">
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -389,11 +396,12 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-7.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-7.jpg') }}"
+                                                    alt="#">
                                                 <span class="sale-tag">-50%</span>
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -421,10 +429,11 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-8.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-8.jpg') }}"
+                                                    alt="#">
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -451,11 +460,12 @@
 
                                         <div class="single-product">
                                             <div class="product-image">
-                                                <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}" alt="#">
+                                                <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}"
+                                                    alt="#">
                                                 <span class="sale-tag">-25%</span>
                                                 <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                      class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{ route('cart.show') }}" class="btn"><i
+                                                            class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -505,11 +515,12 @@
                                             <div class="row align-items-center">
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="product-image">
-<img src="{{ asset('assets/frontend/images/products/product-1.jpg') }}" alt="#">
+                                                        <img src="{{ asset('assets/frontend/images/products/product-1.jpg') }}"
+                                                            alt="#">
                                                         <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                            <a href="{{ route('cart.show') }}" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to
+                                                                Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -542,12 +553,13 @@
                                             <div class="row align-items-center">
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="product-image">
-<img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}" alt="#">
+                                                        <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}"
+                                                            alt="#">
                                                         <span class="sale-tag">-25%</span>
                                                         <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                            <a href="{{ route('cart.show') }}" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to
+                                                                Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -555,7 +567,8 @@
                                                     <div class="product-info">
                                                         <span class="category">Speaker</span>
                                                         <h4 class="title">
-                                                            <a href="{{ route('product-details') }}">Big Power Sound Speaker</a>
+                                                            <a href="{{ route('product-details') }}">Big Power Sound
+                                                                Speaker</a>
                                                         </h4>
                                                         <ul class="review">
                                                             <li><i class="lni lni-star-filled"></i></li>
@@ -581,11 +594,12 @@
                                             <div class="row align-items-center">
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="product-image">
-<img src="{{ asset('assets/frontend/images/products/product-3.jpg') }}" alt="#">
+                                                        <img src="{{ asset('assets/frontend/images/products/product-3.jpg') }}"
+                                                            alt="#">
                                                         <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                            <a href="{{ route('cart.show') }}" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to
+                                                                Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -593,7 +607,8 @@
                                                     <div class="product-info">
                                                         <span class="category">Camera</span>
                                                         <h4 class="title">
-                                                            <a href="{{ route('product-details') }}">WiFi Security Camera</a>
+                                                            <a href="{{ route('product-details') }}">WiFi Security
+                                                                Camera</a>
                                                         </h4>
                                                         <ul class="review">
                                                             <li><i class="lni lni-star-filled"></i></li>
@@ -618,12 +633,13 @@
                                             <div class="row align-items-center">
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="product-image">
-<img src="{{ asset('assets/frontend/images/products/product-4.jpg') }}" alt="#">
+                                                        <img src="{{ asset('assets/frontend/images/products/product-4.jpg') }}"
+                                                            alt="#">
                                                         <span class="new-tag">New</span>
                                                         <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                            <a href="{{ route('cart.show') }}" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to
+                                                                Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -656,12 +672,13 @@
                                             <div class="row align-items-center">
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="product-image">
-<img src="{{ asset('assets/frontend/images/products/product-7.jpg') }}" alt="#">
+                                                        <img src="{{ asset('assets/frontend/images/products/product-7.jpg') }}"
+                                                            alt="#">
                                                         <span class="sale-tag">-50%</span>
                                                         <div class="button">
-<a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                            <a href="{{ route('cart.show') }}" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to
+                                                                Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -669,7 +686,8 @@
                                                     <div class="product-info">
                                                         <span class="category">Headphones</span>
                                                         <h4 class="title">
-                                                            <a href="{{ route('product-details') }}">PX7 Wireless Headphones</a>
+                                                            <a href="{{ route('product-details') }}">PX7 Wireless
+                                                                Headphones</a>
                                                         </h4>
                                                         <ul class="review">
                                                             <li><i class="lni lni-star-filled"></i></li>

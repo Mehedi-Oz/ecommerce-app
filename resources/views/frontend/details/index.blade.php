@@ -33,14 +33,20 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="{{ asset('assets/frontend/images/product-details/01.jpg') }}" id="current" alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/01.jpg') }}" id="current"
+                                        alt="#">
                                 </div>
                                 <div class="images">
-                                    <img src="{{ asset('assets/frontend/images/product-details/01.jpg') }}" class="img" alt="#">
-                                    <img src="{{ asset('assets/frontend/images/product-details/02.jpg') }}" class="img" alt="#">
-                                    <img src="{{ asset('assets/frontend/images/product-details/03.jpg') }}" class="img" alt="#">
-                                    <img src="{{ asset('assets/frontend/images/product-details/04.jpg') }}" class="img" alt="#">
-                                    <img src="{{ asset('assets/frontend/images/product-details/05.jpg') }}" class="img" alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/01.jpg') }}" class="img"
+                                        alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/02.jpg') }}" class="img"
+                                        alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/03.jpg') }}" class="img"
+                                        alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/04.jpg') }}" class="img"
+                                        alt="#">
+                                    <img src="{{ asset('assets/frontend/images/product-details/05.jpg') }}" class="img"
+                                        alt="#">
                                 </div>
                             </main>
                         </div>
@@ -103,7 +109,8 @@
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <a href="{{ route('cart.show') }}" class="btn" style="width: 100%;">{{ __('Add to Cart') }}</a>
+                                            <a href="{{ route('cart.show') }}" class="btn"
+                                                style="width: 100%;">{{ __('Add to Cart') }}</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12">

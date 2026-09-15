@@ -12,7 +12,7 @@
     <select
         name="{{ $name }}"
         id="{{ $name }}"
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($name)]) }}
+        {{ $attributes->class(['form-select', 'is-invalid' => $errors->has($name)]) }}
     >
         <option value="" disabled @selected(! $selected)>{{ __('Select') }}</option>
         {{ $slot }}

@@ -3,9 +3,12 @@
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\UnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -51,4 +54,33 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::put('/subcategories/{subcategory}', [SubCategoryController::class, 'update'])->name('subcategories.update');
     Route::patch('/subcategories/{subcategory}/status', [SubCategoryController::class, 'toggleStatus'])->name('subcategories.status');
     Route::delete('/subcategories/{subcategory}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
+
+    /** Brands Management Routes */
+    Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
+    Route::get('/brands/create', [BrandController::class, 'create'])->name('brands.create');
+    Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+    Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+    Route::put('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
+    Route::patch('/brands/{brand}/status', [BrandController::class, 'toggleStatus'])->name('brands.status');
+    Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
+
+    /** Units Management Routes */
+    Route::get('/units', [UnitController::class, 'index'])->name('units.index');
+    Route::get('/units/create', [UnitController::class, 'create'])->name('units.create');
+    Route::post('/units', [UnitController::class, 'store'])->name('units.store');
+    Route::get('/units/{unit}/edit', [UnitController::class, 'edit'])->name('units.edit');
+    Route::put('/units/{unit}', [UnitController::class, 'update'])->name('units.update');
+    Route::patch('/units/{unit}/status', [UnitController::class, 'toggleStatus'])->name('units.status');
+    Route::delete('/units/{unit}', [UnitController::class, 'destroy'])->name('units.destroy');
+
+    /** Products Management Routes */
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::patch('/products/{product}/status', [ProductController::class, 'toggleStatus'])->name('products.status');
+    Route::patch('/products/{product}/featured', [ProductController::class, 'toggleFeatured'])->name('products.featured');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
