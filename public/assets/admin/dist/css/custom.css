@@ -39,3 +39,24 @@
 .is-dropify-invalid .dropify-wrapper:hover {
     border-color: #dc3545 !important;
 }
+
+/* Admin data tables: keep every column reachable on small screens */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.admin-data-table {
+    width: 100% !important;
+    min-width: 640px;
+}
+
+.admin-table-wide {
+    min-width: 1024px;
+}
+
+@media (max-width: 575.98px) {
+    .description-clamp {
+        max-width: 140px;
+    }
+}

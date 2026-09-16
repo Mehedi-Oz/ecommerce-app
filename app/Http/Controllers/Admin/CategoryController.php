@@ -7,26 +7,19 @@ use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Services\NotificationService;
-use App\Traits\FileUpload;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends Controller
 {
-    use FileUpload;
-
     public function create(): View
     {
-        return view('admin.category.create');
+        return view('admin.categories.create');
     }
 
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
         $data = $request->validated();
-
-        if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadFile($request->file('image'), 'categories');
-        }
 
         Category::create($data);
         NotificationService::created();
@@ -38,25 +31,17 @@ class CategoryController extends Controller
     {
         $categories = Category::latest()->get();
 
-        return view('admin.category.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     public function edit(Category $category): View
     {
-        return view('admin.category.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
         $data = $request->validated();
-
-        if ($request->hasFile('image')) {
-            if ($category->image) {
-                $this->deleteFile($category->image);
-            }
-
-            $data['image'] = $this->uploadFile($request->file('image'), 'categories');
-        }
 
         $category->fill($data);
 
@@ -72,10 +57,6 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
-        if ($category->image) {
-            $this->deleteFile($category->image);
-        }
-
         $category->delete();
         NotificationService::deleted();
 

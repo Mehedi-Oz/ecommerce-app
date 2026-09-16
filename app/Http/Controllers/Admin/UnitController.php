@@ -14,7 +14,7 @@ class UnitController extends Controller
 {
     public function create(): View
     {
-        return view('admin.unit.create');
+        return view('admin.units.create');
     }
 
     public function store(UnitStoreRequest $request): RedirectResponse
@@ -29,12 +29,12 @@ class UnitController extends Controller
     {
         $units = Unit::latest()->get();
 
-        return view('admin.unit.index', compact('units'));
+        return view('admin.units.index', compact('units'));
     }
 
     public function edit(Unit $unit): View
     {
-        return view('admin.unit.edit', compact('unit'));
+        return view('admin.units.edit', compact('unit'));
     }
 
     public function update(UnitUpdateRequest $request, Unit $unit): RedirectResponse

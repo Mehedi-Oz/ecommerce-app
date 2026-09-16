@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function create(): View
     {
-        return view('admin.product.create', [
+        return view('admin.products.create', [
             'categories' => Category::all(),
             'subCategories' => SubCategory::all(),
             'brands' => Brand::all(),
@@ -51,21 +51,21 @@ class ProductController extends Controller
     {
         $products = Product::with(['category', 'brand'])->latest()->paginate(20);
 
-        return view('admin.product.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function show(Product $product): View
     {
         $product->load(['category', 'subCategory', 'brand', 'unit', 'images']);
 
-        return view('admin.product.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
     public function edit(Product $product): View
     {
         $product->load('images');
 
-        return view('admin.product.edit', [
+        return view('admin.products.edit', [
             'product' => $product,
             'categories' => Category::all(),
             'subCategories' => SubCategory::all(),

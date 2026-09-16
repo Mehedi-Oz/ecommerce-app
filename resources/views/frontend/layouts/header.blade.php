@@ -82,12 +82,10 @@
                                 <div class="search-select">
                                     <div class="select-position">
                                         <select id="select1">
-                                            <option selected>{{ __("All") }}</option>
-                                            <option value="1">{{ __("option 01") }}</option>
-                                            <option value="2">{{ __("option 02") }}</option>
-                                            <option value="3">{{ __("option 03") }}</option>
-                                            <option value="4">{{ __("option 04") }}</option>
-                                            <option value="5">{{ __("option 05") }}</option>
+                                            <option selected>{{ __('All') }}</option>
+                                            @foreach ($navCategories as $navCategory)
+                                                <option value="{{ $navCategory->id }}">{{ $navCategory->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -185,31 +183,23 @@
                         <div class="mega-category-menu">
                             <span class="cat-button"><i class="lni lni-menu"></i>{{ __("All Categories") }}</span>
                             <ul class="sub-category">
-                                <li><a href="{{ route('product-category') }}">{{ __("Electronics") }} <i class="lni lni-chevron-right"></i></a>
-                                    <ul class="inner-sub-category">
-                                        <li><a href="{{ route('product-category') }}">{{ __("Digital Cameras") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Camcorders") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Camera Drones") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Smart Watches") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Headphones") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("MP3 Players") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Microphones") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Chargers") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Batteries") }}</a></li>
-                                        <li><a href="{{ route('product-category') }}">{{ __("Cables & Adapters") }}</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{ route('product-category') }}">{{ __("accessories") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("Televisions") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("best selling") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("top 100 offer") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("sunglass") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("watch") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("man’s product") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("Home Audio & Theater") }}</a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("Computers & Tablets") }} </a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("Video Games") }} </a></li>
-                                <li><a href="{{ route('product-category') }}">{{ __("Home Appliances") }} </a></li>
+                                @forelse ($navCategories as $navCategory)
+                                    <li><a href="{{ route('product-category', ['category' => $navCategory->id]) }}">{{ $navCategory->name }}
+                                            @if ($navCategory->subCategories->isNotEmpty())
+                                                <i class="lni lni-chevron-right"></i>
+                                            @endif
+                                        </a>
+                                        @if ($navCategory->subCategories->isNotEmpty())
+                                            <ul class="inner-sub-category">
+                                                @foreach ($navCategory->subCategories as $navSubCategory)
+                                                    <li><a href="{{ route('product-category', ['category' => $navCategory->id, 'subcategory' => $navSubCategory->id]) }}">{{ $navSubCategory->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @empty
+                                    <li><a href="{{ route('product-category') }}">{{ __('No categories available') }}</a></li>
+                                @endforelse
                             </ul>
                         </div>
 

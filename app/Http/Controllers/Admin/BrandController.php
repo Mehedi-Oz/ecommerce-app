@@ -17,7 +17,7 @@ class BrandController extends Controller
 
     public function create(): View
     {
-        return view('admin.brand.create');
+        return view('admin.brands.create');
     }
 
     public function store(BrandStoreRequest $request): RedirectResponse
@@ -38,12 +38,12 @@ class BrandController extends Controller
     {
         $brands = Brand::latest()->get();
 
-        return view('admin.brand.index', compact('brands'));
+        return view('admin.brands.index', compact('brands'));
     }
 
     public function edit(Brand $brand): View
     {
-        return view('admin.brand.edit', compact('brand'));
+        return view('admin.brands.edit', compact('brand'));
     }
 
     public function update(BrandUpdateRequest $request, Brand $brand): RedirectResponse

@@ -10,7 +10,7 @@
                     <h4 class="card-title">Update Subcategory</h4>
                     <h6 class="card-subtitle">Edit the details below to update the subcategory</h6>
                     <form class="form-horizontal p-t-20" method="POST"
-                        action="{{ route('admin.subcategories.update', $subcategory) }}" enctype="multipart/form-data">
+                        action="{{ route('admin.subcategories.update', $subcategory) }}">
                         @csrf
                         @method('PUT')
 
@@ -27,18 +27,6 @@
 
                         <x-admin.input-text-area name="description" :label="__('Description')"
                             placeholder="e.g. Smartphones, tablets and accessories" :value="$subcategory->description" />
-
-                        <div class="mb-3">
-                            <label class="form-label">Image</label>
-                            @if ($subcategory->image)
-                                <x-admin.image-preview :src="$subcategory->image" class="mb-2" />
-                            @endif
-                            <div class="@error('image') is-dropify-invalid @enderror">
-                                <input type="file" class="dropify" name="image"
-                                    data-default-file="{{ $subcategory->image ? asset($subcategory->image) : '' }}" />
-                            </div>
-                            <x-admin.input-error :for="'image'" />
-                        </div>
 
                         <x-admin.input-select name="status" :label="__('Status')"
                             :selected="old('status', $subcategory->status)">

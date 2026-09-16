@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
             $table->enum('status', ['published', 'unpublished'])->default('published');
             $table->timestamps();
         });

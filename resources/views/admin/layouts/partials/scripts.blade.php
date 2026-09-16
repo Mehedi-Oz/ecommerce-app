@@ -38,6 +38,8 @@
             ordering: false,
             lengthChange: false,
             searching: false,
+            autoWidth: false,
+            scrollX: true,
         });
     });
 </script>

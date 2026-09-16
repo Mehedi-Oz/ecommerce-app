@@ -14,7 +14,7 @@ class EcommerceController extends Controller
 
     public function category(): View
     {
-        return view('frontend.category.index');
+        return view('frontend.categories.index');
     }
 
     public function details(): View

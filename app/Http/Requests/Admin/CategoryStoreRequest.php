@@ -25,7 +25,6 @@ class CategoryStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
             'description' => ['nullable', 'string', 'max:2000'],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:2048'],
             'status' => ['sometimes', 'in:published,unpublished'],
         ];
     }
