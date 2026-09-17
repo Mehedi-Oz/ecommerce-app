@@ -25,7 +25,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with('navCategories', Category::query()
                 ->where('status', 'published')
                 ->orderBy('name')
+                ->withCount(['products' => fn ($query) => $query->where('status', 'published')])
                 ->with(['subCategories' => fn ($query) => $query->where('status', 'published')->orderBy('name')])
+                ->get());
+        });
+
+        View::composer('frontend.categories.index', function ($view): void {
+            $view->with('categories', Category::query()
+                ->where('status', 'published')
+                ->orderBy('name')
+                ->withCount(['products' => fn ($query) => $query->where('status', 'published')])
                 ->get());
         });
     }
