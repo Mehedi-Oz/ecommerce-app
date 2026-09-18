@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 ->get());
         });
 
-        View::composer('frontend.categories.index', function ($view): void {
+        View::composer('frontend.products.index', function ($view): void {
             $view->with('categories', Category::query()
                 ->where('status', 'published')
                 ->orderBy('name')

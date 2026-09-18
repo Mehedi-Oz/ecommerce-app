@@ -20,7 +20,7 @@ class ProductUpdateRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'exists:categories,id'],
-            'sub_category_id' => ['required', 'exists:sub_categories,id'],
+            'sub_category_id' => ['required', Rule::exists('sub_categories', 'id')->where('category_id', $this->input('category_id'))],
             'brand_id' => ['required', 'exists:brands,id'],
             'unit_id' => ['required', 'exists:units,id'],
             'name' => ['required', 'string', 'max:255'],
@@ -37,9 +37,7 @@ class ProductUpdateRequest extends FormRequest
             'remove_gallery_images' => ['nullable', 'array'],
             'remove_gallery_images.*' => [
                 'integer',
-                Rule::exists('product_images', 'id')->where(
-                    fn ($query) => $query->where('product_id', $this->route('product')->id)
-                ),
+                Rule::exists('product_images', 'id')->where('product_id', $this->route('product')->id),
             ],
             'featured_status' => ['sometimes', 'in:featured,not_featured'],
             'status' => ['sometimes', 'in:published,unpublished'],

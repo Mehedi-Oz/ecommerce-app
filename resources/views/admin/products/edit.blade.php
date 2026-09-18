@@ -79,18 +79,19 @@
                             </div>
                             <div class="col-md-4">
                                 <x-admin.input-text name="stock_amount" type="number" :label="__('Stock Amount')"
-                                    :value="$product->stock_amount" required />
+                                    :value="$product->stock_amount" min="0" required />
                             </div>
                             <div class="col-md-4">
                                 <x-admin.input-text name="regular_amount" type="number" step="0.01"
-                                    :label="__('Regular Amount')" :value="$product->regular_amount" required />
+                                    :label="__('Regular Amount')" :value="$product->regular_amount" min="0" required />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <x-admin.input-text name="selling_amount" type="number" step="0.01"
-                                    :label="__('Selling Amount')" :value="$product->selling_amount" required />
+                                    :label="__('Selling Amount')" :value="$product->selling_amount" min="0"
+                                    hint="Must be less than the regular amount." required />
                             </div>
                             <div class="col-md-6">
                                 <x-admin.input-text name="hit_count" type="number" :label="__('Hit Count')"
@@ -109,9 +110,6 @@
 
                         <div class="mb-3">
                             <label class="form-label">Featured Image</label>
-                            @if ($product->featured_image)
-                                <x-admin.image-preview :src="$product->featured_image" class="mb-2" />
-                            @endif
                             <div class="@error('featured_image') is-dropify-invalid @enderror">
                                 <input type="file" class="dropify" name="featured_image"
                                     data-default-file="{{ $product->featured_image ? asset($product->featured_image) : '' }}" />
@@ -126,7 +124,8 @@
                                     @foreach ($product->images->sortBy('sort_order') as $image)
                                         <div class="col-md-3 mb-3">
                                             <div class="position-relative">
-                                                <img src="{{ asset($image->image_path) }}" class="img-fluid rounded"
+                                                <img src="{{ asset($image->image_path) }}" alt="{{ $product->name }}"
+                                                    class="img-fluid rounded"
                                                     style="width: 100%; height: 150px; object-fit: cover;" />
                                                 <div class="form-check mt-2">
                                                     <input class="form-check-input" type="checkbox"
@@ -145,11 +144,12 @@
                         <div class="mb-3">
                             <label class="form-label">Add Gallery Images</label>
                             <input type="file" class="form-control" name="gallery_images[]" multiple accept="image/*" />
-                            <small class="form-text text-muted">You can select up to 5 images.</small>
+                            <small class="form-text text-muted">You can add up to 5 gallery images in total (existing + new).</small>
                             <x-admin.input-error :for="'gallery_images'" />
                             @error('gallery_images.*')
                                 <small class="text-danger d-block mt-1">{{ $message }}</small>
                             @enderror
+                            <x-admin.input-error :for="'remove_gallery_images'" />
                         </div>
 
                         <div class="row">
@@ -184,36 +184,40 @@
         $(function() {
             var $categorySelect = $('#category_id');
             var $subCategorySelect = $('#sub_category_id');
-            var selectedCategoryId = '{{ old("category_id", $product->category_id) }}';
 
             function filterSubCategories() {
                 var categoryId = String($categorySelect.val());
-                var currentValue = String($subCategorySelect.val());
-                var currentOption = $subCategorySelect.find('option[value="' + currentValue + '"]');
+                var currentValue = String($subCategorySelect.val() || '');
+                var isCurrentValid = false;
 
                 $subCategorySelect.find('option').each(function() {
                     var option = $(this);
-                    var matches = String(option.data('category-id')) === categoryId;
+                    var optionCategoryId = option.data('category-id');
+
+                    if (optionCategoryId === undefined) {
+                        option.prop('hidden', false);
+                        option.prop('disabled', true);
+
+                        return;
+                    }
+
+                    var matches = String(optionCategoryId) === categoryId;
 
                     option.prop('hidden', !matches);
                     option.prop('disabled', !matches);
+
+                    if (matches && option.val() === currentValue) {
+                        isCurrentValid = true;
+                    }
                 });
 
-                if (currentValue && currentOption.length && currentOption.is(':visible')) {
-                    $subCategorySelect.val(currentValue);
-                } else {
-                    $subCategorySelect.val('');
-                }
+                $subCategorySelect.val(isCurrentValid ? currentValue : '');
             }
 
             $categorySelect.on('change', function() {
                 $subCategorySelect.val('');
                 filterSubCategories();
             });
-
-            if (selectedCategoryId) {
-                $categorySelect.val(selectedCategoryId);
-            }
 
             filterSubCategories();
         });

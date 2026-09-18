@@ -6,8 +6,8 @@ use App\Http\Controllers\Frontend\EcommerceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EcommerceController::class, 'index'])->name('home');
-Route::get('/product-category', [EcommerceController::class, 'category'])->name('product-category');
-Route::get('/product-details', [EcommerceController::class, 'details'])->name('product-details');
+Route::get('/products', [EcommerceController::class, 'products'])->name('products');
+Route::get('/products/{product}', [EcommerceController::class, 'show'])->name('products.show');
 
 Route::get('/cart/show', [CartController::class, 'index'])->name('cart.show');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');

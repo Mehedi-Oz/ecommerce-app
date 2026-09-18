@@ -44,9 +44,12 @@
                         <div class="single-widget">
                             <h3>All Categories</h3>
                             <ul class="list">
+                                <li>
+                                    <a href="{{ route('products') }}">{{ __('All Products') }}</a><span>({{ $categories->sum('products_count') }})</span>
+                                </li>
                                 @forelse ($categories as $category)
                                     <li>
-                                        <a href="{{ route('product-category', ['category' => $category->id]) }}">{{ $category->name }}</a><span>({{ $category->products_count }})</span>
+                                        <a href="{{ route('products', ['category' => $category->id]) }}">{{ $category->name }}</a><span>({{ $category->products_count }})</span>
                                     </li>
                                 @empty
                                     <li>
@@ -124,7 +127,7 @@
                                                         <span class="category">{{ $product->category->name }}</span>
                                                     @endif
                                                     <h4 class="title">
-                                                        <a href="{{ route('product-details') }}">{{ $product->name }}</a>
+                                                        <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                                     </h4>
                                                     <div class="price">
                                                         <span>${{ number_format($product->selling_amount, 2) }}</span>
@@ -188,7 +191,7 @@
                                                                 <span class="category">{{ $product->category->name }}</span>
                                                             @endif
                                                             <h4 class="title">
-                                                                <a href="{{ route('product-details') }}">{{ $product->name }}</a>
+                                                                <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                                             </h4>
                                                             <div class="price">
                                                                 <span>${{ number_format($product->selling_amount, 2) }}</span>

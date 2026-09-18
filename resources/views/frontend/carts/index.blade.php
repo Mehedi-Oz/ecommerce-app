@@ -16,7 +16,7 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
-                        <li><a href="{{ route('product-category') }}">Shop</a></li>
+                        <li><a href="{{ route('products') }}">Shop</a></li>
                         <li>Cart</li>
                     </ul>
                 </div>
@@ -55,11 +55,11 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/cart/01.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="{{ route('product-details') }}">
+                            <h5 class="product-name"><a href="{{ route('products') }}">
                                     Canon EOS M50 Mirrorless Camera</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Mirrorless</span>
@@ -93,11 +93,11 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/cart/02.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="{{ route('product-details') }}">
+                            <h5 class="product-name"><a href="{{ route('products') }}">
                                     Apple iPhone X 256 GB Space Gray</a></h5>
                             <p class="product-des">
                                 <span><em>Memory:</em> 256 GB</span>
@@ -131,11 +131,11 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/cart/03.jpg') }}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="{{ route('product-details') }}">HP LaserJet Pro Laser
+                            <h5 class="product-name"><a href="{{ route('products') }}">HP LaserJet Pro Laser
                                     Printer</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Laser</span>
@@ -193,7 +193,7 @@
                                     </ul>
                                     <div class="button">
                                         <a href="{{ route('checkout') }}" class="btn">Checkout</a>
-                                        <a href="{{ route('product-category') }}" class="btn btn-alt">Continue shopping</a>
+                                        <a href="{{ route('products') }}" class="btn btn-alt">Continue shopping</a>
                                     </div>
                                 </div>
                             </div>

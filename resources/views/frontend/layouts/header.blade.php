@@ -131,12 +131,12 @@
                                                 <a href="javascript:void(0)" class="remove"
                                                     title="{{ __("Remove this item") }}"><i class="lni lni-close"></i></a>
                                                 <div class="cart-img-head">
-                                                    <a class="cart-img" href="{{ route('product-details') }}"><img
+                                                    <a class="cart-img" href="{{ route('products') }}"><img
                                                             src="{{ asset('assets/frontend/images/header/cart-items/item1.jpg') }}"
                                                             alt="#"></a>
                                                 </div>
                                                 <div class="content">
-                                                    <h4><a href="{{ route('product-details') }}">
+                                                    <h4><a href="{{ route('products') }}">
                                                             {{ __("Apple Watch Series 6") }}</a></h4>
                                                     <p class="quantity">{{ __("1x -") }} <span class="amount">{{ __("$99.00") }}</span></p>
                                                 </div>
@@ -145,12 +145,12 @@
                                                 <a href="javascript:void(0)" class="remove"
                                                     title="{{ __("Remove this item") }}"><i class="lni lni-close"></i></a>
                                                 <div class="cart-img-head">
-                                                    <a class="cart-img" href="{{ route('product-details') }}"><img
+                                                    <a class="cart-img" href="{{ route('products') }}"><img
                                                             src="{{ asset('assets/frontend/images/header/cart-items/item2.jpg') }}"
                                                             alt="#"></a>
                                                 </div>
                                                 <div class="content">
-                                                    <h4><a href="{{ route('product-details') }}">{{ __("Wi-Fi Smart Camera") }}</a></h4>
+                                                    <h4><a href="{{ route('products') }}">{{ __("Wi-Fi Smart Camera") }}</a></h4>
                                                     <p class="quantity">{{ __("1x -") }} <span class="amount">{{ __("$35.00") }}</span></p>
                                                 </div>
                                             </li>
@@ -184,7 +184,7 @@
                             <span class="cat-button"><i class="lni lni-menu"></i>{{ __("All Categories") }}</span>
                             <ul class="sub-category">
                                 @forelse ($navCategories as $navCategory)
-                                    <li><a href="{{ route('product-category', ['category' => $navCategory->id]) }}">{{ $navCategory->name }}
+                                    <li><a href="{{ route('products', ['category' => $navCategory->id]) }}">{{ $navCategory->name }}
                                             @if ($navCategory->subCategories->isNotEmpty())
                                                 <i class="lni lni-chevron-right"></i>
                                             @endif
@@ -192,13 +192,13 @@
                                         @if ($navCategory->subCategories->isNotEmpty())
                                             <ul class="inner-sub-category">
                                                 @foreach ($navCategory->subCategories as $navSubCategory)
-                                                    <li><a href="{{ route('product-category', ['category' => $navCategory->id, 'subcategory' => $navSubCategory->id]) }}">{{ $navSubCategory->name }}</a></li>
+                                                    <li><a href="{{ route('products', ['category' => $navCategory->id, 'subcategory' => $navSubCategory->id]) }}">{{ $navSubCategory->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endif
                                     </li>
                                 @empty
-                                    <li><a href="{{ route('product-category') }}">{{ __('No categories available') }}</a></li>
+                                    <li><a href="{{ route('products') }}">{{ __('No categories available') }}</a></li>
                                 @endforelse
                             </ul>
                         </div>
@@ -237,9 +237,9 @@
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="{{ __("Toggle navigation") }}">{{ __("Shop") }}</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
-                                            <li class="nav-item"><a href="{{ route('product-category') }}">{{ __("Shop Grid") }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('products') }}">{{ __("Shop Grid") }}</a></li>
                                             <li class="nav-item"><a href="product-list.html">{{ __("Shop List") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('product-details') }}">{{ __("shop Single") }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('products') }}">{{ __("shop Single") }}</a></li>
                                             <li class="nav-item"><a href="{{ route('cart.show') }}">{{ __("Cart") }}</a></li>
                                             <li class="nav-item"><a href="{{ route('checkout') }}">{{ __("Checkout") }}</a></li>
                                         </ul>

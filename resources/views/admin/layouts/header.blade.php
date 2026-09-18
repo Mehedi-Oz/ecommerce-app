@@ -4,7 +4,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -16,7 +16,7 @@
                 <!-- Logo text --><span>
                  <!-- dark Logo text -->
                  <img src="{{ asset('assets/admin/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
-                 <!-- Light Logo text -->    
+                 <!-- Light Logo text -->
                  <img src="{{ asset('assets/admin/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
         </div>
         <!-- ============================================================== -->

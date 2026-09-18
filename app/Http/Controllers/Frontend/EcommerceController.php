@@ -11,10 +11,19 @@ class EcommerceController extends Controller
 {
     public function index(): View
     {
-        return view('frontend.home.index');
+        $trendingProducts = Product::query()
+            ->where('status', 'published')
+            ->with('category')
+            ->latest()
+            ->take(8)
+            ->get();
+
+        return view('frontend.home.index', [
+            'trendingProducts' => $trendingProducts,
+        ]);
     }
 
-    public function category(Request $request): View
+    public function products(Request $request): View
     {
         $products = Product::query()
             ->where('status', 'published')
@@ -23,13 +32,19 @@ class EcommerceController extends Controller
             ->orderBy('name')
             ->paginate(12);
 
-        return view('frontend.categories.index', [
+        return view('frontend.products.index', [
             'products' => $products,
         ]);
     }
 
-    public function details(): View
+    public function show(Product $product): View
     {
-        return view('frontend.details.index');
+        abort_if($product->status !== 'published', 404);
+
+        $product->load(['category', 'subCategory', 'brand', 'unit', 'images']);
+
+        return view('frontend.products.show', [
+            'product' => $product,
+        ]);
     }
 }

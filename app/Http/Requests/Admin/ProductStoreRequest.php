@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductStoreRequest extends FormRequest
 {
@@ -19,7 +20,7 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'exists:categories,id'],
-            'sub_category_id' => ['required', 'exists:sub_categories,id'],
+            'sub_category_id' => ['required', Rule::exists('sub_categories', 'id')->where('category_id', $this->input('category_id'))],
             'brand_id' => ['required', 'exists:brands,id'],
             'unit_id' => ['required', 'exists:units,id'],
             'name' => ['required', 'string', 'max:255'],

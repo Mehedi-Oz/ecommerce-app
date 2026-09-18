@@ -16,7 +16,7 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
-                        <li><a href="{{ route('product-category') }}">Shop</a></li>
+                        <li><a href="{{ route('products') }}">Shop</a></li>
                         <li>checkout</li>
                     </ul>
                 </div>
@@ -364,7 +364,7 @@
                             </div>
                         </div>
                         <div class="checkout-sidebar-banner mt-30">
-                            <a href="{{ route('product-category') }}">
+                            <a href="{{ route('products') }}">
                                 <img src="{{ asset('assets/frontend/images/banner/banner.jpg') }}" alt="#">
                             </a>
                         </div>

@@ -23,11 +23,10 @@
                                     </p>
                                     <h3><span>{{ __('Now Only') }}</span> {{ __("$320.99") }}</h3>
                                     <div class="button">
-                                        <a href="{{ route('product-category') }}" class="btn">{{ __('Shop Now') }}</a>
+                                        <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="single-slider"
                                 style="background-image: url('{{ asset('assets/frontend/images/hero/slider-bg2.jpg') }}');">
@@ -39,7 +38,7 @@
                                     </p>
                                     <h3><span>{{ __('Combo Only:') }}</span> {{ __("$590.00") }}</h3>
                                     <div class="button">
-                                        <a href="{{ route('product-category') }}" class="btn">{{ __('Shop Now') }}</a>
+                                        <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +70,7 @@
                                     <h2>{{ __('Weekly Sale!') }}</h2>
                                     <p>{{ __('Saving up to 50% off all online store items this week.') }}</p>
                                     <div class="button">
-                                        <a class="btn" href="{{ route('product-category') }}">{{ __('Shop Now') }}</a>
+                                        <a class="btn" href="{{ route('products') }}">{{ __('Shop Now') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +88,7 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2>{{ __('Featured Categories') }}</h2>
-                        <p>{{ __("There are many variations of passages of Lorem Ipsum available, but the majority have
-                                                                                                    suffered alteration in some form.") }}
+                        <p>{{ __('There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.') }}
                         </p>
                     </div>
                 </div>
@@ -101,11 +99,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('TV & Audios') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-1.png') }}"
@@ -119,11 +117,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('Desktop & Laptop') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-2.png') }}"
@@ -137,11 +135,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('Cctv Camera') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-3.png') }}"
@@ -155,11 +153,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('Dslr Camera') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-4.png') }}"
@@ -173,11 +171,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('Smart Phones') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-5.png') }}"
@@ -191,11 +189,11 @@
                     <div class="single-category">
                         <h3 class="heading">{{ __('Game Console') }}</h3>
                         <ul>
-                            <li><a href="{{ route('product-category') }}">{{ __('Smart Television') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('QLED TV') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Audios') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('Headphones') }}</a></li>
-                            <li><a href="{{ route('product-category') }}">{{ __('View All') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Smart Television') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('QLED TV') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Audios') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('Headphones') }}</a></li>
+                            <li><a href="{{ route('products') }}">{{ __('View All') }}</a></li>
                         </ul>
                         <div class="images">
                             <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-6.png') }}"
@@ -220,251 +218,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
+                @forelse ($trendingProducts as $product)
+                    <div class="col-lg-3 col-md-6 col-12">
 
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-1.jpg') }}" alt="#">
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
+                        <div class="single-product">
+                            <div class="product-image">
+                                <img src="{{ $product->featured_image ? asset($product->featured_image) : asset('assets/frontend/images/products/product-1.jpg') }}"
+                                    alt="{{ $product->name }}">
+                                @php
+                                    $discount = $product->regular_amount > $product->selling_amount
+                                        ? round((($product->regular_amount - $product->selling_amount) / $product->regular_amount) * 100)
+                                        : null;
+                                @endphp
+                                @if ($discount)
+                                    <span class="sale-tag">-{{ $discount }}%</span>
+                                @endif
+                                <div class="button">
+                                    <a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
+                                        {{ __('Add to Cart') }}</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                @if ($product->category)
+                                    <span class="category">{{ $product->category->name }}</span>
+                                @endif
+                                <h4 class="title">
+                                    <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
+                                </h4>
+                                <div class="price">
+                                    <span>${{ number_format($product->selling_amount, 2) }}</span>
+                                    @if ($product->regular_amount > $product->selling_amount)
+                                        <span class="discount-price">${{ number_format($product->regular_amount, 2) }}</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Watches') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('Xiaomi Mi Band 5') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star"></i></li>
-                                <li><span>{{ __('4.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$199.00") }}</span>
-                            </div>
-                        </div>
+
                     </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-2.jpg') }}" alt="#">
-                            <span class="sale-tag">{{ __('-25%') }}</span>
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Speaker') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('Big Power Sound Speaker') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><span>{{ __('5.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$275.00") }}</span>
-                                <span class="discount-price">{{ __("$300.00") }}</span>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-12">
+                        <p>{{ __('No products available') }}</p>
                     </div>
+                @endforelse
 
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-3.jpg') }}" alt="#">
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Camera') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('WiFi Security Camera') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><span>{{ __('5.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$399.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-4.jpg') }}" alt="#">
-                            <span class="new-tag">{{ __('New') }}</span>
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Phones') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('iphone 6x plus') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><span>{{ __('5.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$400.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-5.jpg') }}" alt="#">
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Headphones') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('Wireless Headphones') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><span>{{ __('5.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$350.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-6.jpg') }}" alt="#">
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Speaker') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('Mini Bluetooth Speaker') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star"></i></li>
-                                <li><span>{{ __('4.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$70.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-7.jpg') }}" alt="#">
-                            <span class="sale-tag">{{ __('-50%') }}</span>
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Headphones') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('PX7 Wireless Headphones') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star"></i></li>
-                                <li><span>{{ __('4.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$100.00") }}</span>
-                                <span class="discount-price">{{ __("$200.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-product">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/products/product-8.jpg') }}" alt="#">
-                            <div class="button">
-<a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                {{ __('Add to Cart') }}</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">{{ __('Laptop') }}</span>
-                            <h4 class="title">
-                                <a href="{{ route('product-details') }}">{{ __('Apple MacBook Air') }}</a>
-                            </h4>
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><span>{{ __('5.0 Review(s)') }}</span></li>
-                            </ul>
-                            <div class="price">
-                                <span>{{ __("$899.00") }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
     </section>
@@ -480,7 +276,7 @@
                             <p>{{ __('Space Gray Aluminum Case with') }} <br>{{ __('Black/Volt Real Sport Band') }}
                             </p>
                             <div class="button">
-                                <a href="{{ route('product-details') }}" class="btn">{{ __('View Details') }}</a>
+                                <a href="{{ route('products') }}" class="btn">{{ __('View Details') }}</a>
                             </div>
                         </div>
                     </div>
@@ -494,7 +290,7 @@
                                 <br>{{ __('eiusmod tempor incididunt ut labore.') }}
                             </p>
                             <div class="button">
-                                <a href="{{ route('product-category') }}" class="btn">{{ __('Shop Now') }}</a>
+                                <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                             </div>
                         </div>
                     </div>
@@ -531,7 +327,7 @@
                                 <div class="product-info">
                                     <span class="category">{{ __('Camera') }}</span>
                                     <h4 class="title">
-                                        <a href="{{ route('product-details') }}">{{ __('WiFi Security Camera') }}</a>
+                                        <a href="{{ route('products') }}">{{ __('WiFi Security Camera') }}</a>
                                     </h4>
                                     <ul class="review">
                                         <li><i class="lni lni-star-filled"></i></li>
@@ -562,7 +358,7 @@
                                 <div class="product-info">
                                     <span class="category">{{ __('Laptop') }}</span>
                                     <h4 class="title">
-                                        <a href="{{ route('product-details') }}">{{ __('Apple MacBook Air') }}</a>
+                                        <a href="{{ route('products') }}">{{ __('Apple MacBook Air') }}</a>
                                     </h4>
                                     <ul class="review">
                                         <li><i class="lni lni-star-filled"></i></li>
@@ -593,7 +389,7 @@
                                 <div class="product-info">
                                     <span class="category">{{ __('Speaker') }}</span>
                                     <h4 class="title">
-                                        <a href="{{ route('product-details') }}">{{ __('Bluetooth Speaker') }}</a>
+                                        <a href="{{ route('products') }}">{{ __('Bluetooth Speaker') }}</a>
                                     </h4>
                                     <ul class="review">
                                         <li><i class="lni lni-star-filled"></i></li>
@@ -623,7 +419,7 @@
                                 <span>{{ __("$590.00") }}</span>
                             </div>
                             <div class="button">
-                                <a href="{{ route('product-category') }}" class="btn">{{ __('Shop Now') }}</a>
+                                <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                             </div>
                         </div>
                     </div>
@@ -636,7 +432,7 @@
                             <span class="sale-tag">{{ __('-50%') }}</span>
                         </div>
                         <div class="text">
-                            <h2><a href="{{ route('product-details') }}">{{ __('Bluetooth Headphone') }}</a></h2>
+                            <h2><a href="{{ route('products') }}">{{ __('Bluetooth Headphone') }}</a></h2>
                             <ul class="review">
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
@@ -688,13 +484,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/01.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('GoPro Hero4 Silver') }}</a>
+                                <a href="{{ route('products') }}">{{ __('GoPro Hero4 Silver') }}</a>
                             </h3>
                             <span>{{ __("$287.99") }}</span>
                         </div>
@@ -703,13 +499,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/02.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Puro Sound Labs BT2200') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Puro Sound Labs BT2200') }}</a>
                             </h3>
                             <span>{{ __("$95.00") }}</span>
                         </div>
@@ -718,13 +514,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/03.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('HP OfficeJet Pro 8710') }}</a>
+                                <a href="{{ route('products') }}">{{ __('HP OfficeJet Pro 8710') }}</a>
                             </h3>
                             <span>{{ __("$120.00") }}</span>
                         </div>
@@ -736,13 +532,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/04.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('iPhone X 256 GB Space Gray') }}</a>
+                                <a href="{{ route('products') }}">{{ __('iPhone X 256 GB Space Gray') }}</a>
                             </h3>
                             <span>{{ __("$1150.00") }}</span>
                         </div>
@@ -751,13 +547,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/05.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Canon EOS M50 Mirrorless Camera') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Canon EOS M50 Mirrorless Camera') }}</a>
                             </h3>
                             <span>{{ __("$950.00") }}</span>
                         </div>
@@ -766,13 +562,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/06.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Microsoft Xbox One S') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Microsoft Xbox One S') }}</a>
                             </h3>
                             <span>{{ __("$298.00") }}</span>
                         </div>
@@ -784,13 +580,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/07.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Samsung Gear 360 VR Camera') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Samsung Gear 360 VR Camera') }}</a>
                             </h3>
                             <span>{{ __("$68.00") }}</span>
                         </div>
@@ -799,13 +595,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/08.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Samsung Galaxy S9+ 64 GB') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Samsung Galaxy S9+ 64 GB') }}</a>
                             </h3>
                             <span>{{ __("$840.00") }}</span>
                         </div>
@@ -814,13 +610,13 @@
 
                     <div class="single-list">
                         <div class="list-image">
-                            <a href="{{ route('product-details') }}"><img
+                            <a href="{{ route('products') }}"><img
                                     src="{{ asset('assets/frontend/images/home-product-list/09.jpg') }}"
                                     alt="#"></a>
                         </div>
                         <div class="list-info">
                             <h3>
-                                <a href="{{ route('product-details') }}">{{ __('Zeus Bluetooth Headphones') }}</a>
+                                <a href="{{ route('products') }}">{{ __('Zeus Bluetooth Headphones') }}</a>
                             </h3>
                             <span>{{ __("$28.00") }}</span>
                         </div>
