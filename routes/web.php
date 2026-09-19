@@ -9,7 +9,14 @@ Route::get('/', [EcommerceController::class, 'index'])->name('home');
 Route::get('/products', [EcommerceController::class, 'products'])->name('products');
 Route::get('/products/{product}', [EcommerceController::class, 'show'])->name('products.show');
 
-Route::get('/cart/show', [CartController::class, 'index'])->name('cart.show');
+/** cart management routes */
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::patch('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::delete('/cart', [CartController::class, 'clear'])->name('cart.clear');
+
+/** checkout management routes */
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 Route::middleware([

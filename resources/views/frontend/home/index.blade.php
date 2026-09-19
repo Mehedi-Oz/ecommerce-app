@@ -16,12 +16,12 @@
                             <div class="single-slider"
                                 style="background-image: url('{{ asset('assets/frontend/images/hero/slider-bg1.jpg') }}');">
                                 <div class="content">
-                                    <h2><span>{{ __("No restocking fee ($35 savings)") }}</span>
+                                    <h2><span>{{ __("No restocking fee (৳ 35 savings)") }}</span>
                                         {{ __('M75 Sport Watch') }}
                                     </h2>
                                     <p>{{ __('Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.') }}
                                     </p>
-                                    <h3><span>{{ __('Now Only') }}</span> {{ __("$320.99") }}</h3>
+                                    <h3><span>{{ __('Now Only') }}</span> {{ __("৳ 320.99") }}</h3>
                                     <div class="button">
                                         <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                                     </div>
@@ -36,7 +36,7 @@
                                     </h2>
                                     <p>{{ __('Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.') }}
                                     </p>
-                                    <h3><span>{{ __('Combo Only:') }}</span> {{ __("$590.00") }}</h3>
+                                    <h3><span>{{ __('Combo Only:') }}</span> {{ __("৳ 590.00") }}</h3>
                                     <div class="button">
                                         <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
                                     </div>
@@ -58,7 +58,7 @@
                                         <span>{{ __('New line required') }}</span>
                                         {{ __('iPhone 12 Pro Max') }}
                                     </h2>
-                                    <h3>{{ __("$259.99") }}</h3>
+                                    <h3>{{ __("৳ 259.99") }}</h3>
                                 </div>
                             </div>
 
@@ -234,8 +234,13 @@
                                     <span class="sale-tag">-{{ $discount }}%</span>
                                 @endif
                                 <div class="button">
-                                    <a href="javascript:void(0)" class="btn"><i class="lni lni-cart"></i>
-                                        {{ __('Add to Cart') }}</a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                                        <input type="hidden" name="quantity" value="1" />
+                                        <button type="submit" class="btn"><i class="lni lni-cart"></i>
+                                            {{ __('Add to Cart') }}</button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="product-info">
@@ -246,9 +251,9 @@
                                     <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                 </h4>
                                 <div class="price">
-                                    <span>${{ number_format($product->selling_amount, 2) }}</span>
+                                    <span>৳ {{ number_format($product->selling_amount, 2) }}</span>
                                     @if ($product->regular_amount > $product->selling_amount)
-                                        <span class="discount-price">${{ number_format($product->regular_amount, 2) }}</span>
+                                        <span class="discount-price">৳ {{ number_format($product->regular_amount, 2) }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -338,7 +343,7 @@
                                         <li><span>{{ __('5.0 Review(s)') }}</span></li>
                                     </ul>
                                     <div class="price">
-                                        <span>{{ __("$399.00") }}</span>
+                                        <span>{{ __("৳ 399.00") }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -369,7 +374,7 @@
                                         <li><span>{{ __('5.0 Review(s)') }}</span></li>
                                     </ul>
                                     <div class="price">
-                                        <span>{{ __("$899.00") }}</span>
+                                        <span>{{ __("৳ 899.00") }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +405,7 @@
                                         <li><span>{{ __('4.0 Review(s)') }}</span></li>
                                     </ul>
                                     <div class="price">
-                                        <span>{{ __("$70.00") }}</span>
+                                        <span>{{ __("৳ 70.00") }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -416,7 +421,7 @@
                                 <br>{{ __('eiusmod tempor incididunt ut labore.') }}
                             </p>
                             <div class="price">
-                                <span>{{ __("$590.00") }}</span>
+                                <span>{{ __("৳ 590.00") }}</span>
                             </div>
                             <div class="button">
                                 <a href="{{ route('products') }}" class="btn">{{ __('Shop Now') }}</a>
@@ -442,8 +447,8 @@
                                 <li><span>{{ __('5.0 Review(s)') }}</span></li>
                             </ul>
                             <div class="price">
-                                <span>{{ __("$200.00") }}</span>
-                                <span class="discount-price">{{ __("$400.00") }}</span>
+                                <span>{{ __("৳ 200.00") }}</span>
+                                <span class="discount-price">{{ __("৳ 400.00") }}</span>
                             </div>
                             <p>{{ __('Lorem Ipsum is simply dummy text of the printing and typesetting industry incididunt ut eiusmod tempor labores.') }}
                             </p>
@@ -492,7 +497,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('GoPro Hero4 Silver') }}</a>
                             </h3>
-                            <span>{{ __("$287.99") }}</span>
+                            <span>{{ __("৳ 287.99") }}</span>
                         </div>
                     </div>
 
@@ -507,7 +512,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Puro Sound Labs BT2200') }}</a>
                             </h3>
-                            <span>{{ __("$95.00") }}</span>
+                            <span>{{ __("৳ 95.00") }}</span>
                         </div>
                     </div>
 
@@ -522,7 +527,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('HP OfficeJet Pro 8710') }}</a>
                             </h3>
-                            <span>{{ __("$120.00") }}</span>
+                            <span>{{ __("৳ 120.00") }}</span>
                         </div>
                     </div>
 
@@ -540,7 +545,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('iPhone X 256 GB Space Gray') }}</a>
                             </h3>
-                            <span>{{ __("$1150.00") }}</span>
+                            <span>{{ __("৳ 1150.00") }}</span>
                         </div>
                     </div>
 
@@ -555,7 +560,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Canon EOS M50 Mirrorless Camera') }}</a>
                             </h3>
-                            <span>{{ __("$950.00") }}</span>
+                            <span>{{ __("৳ 950.00") }}</span>
                         </div>
                     </div>
 
@@ -570,7 +575,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Microsoft Xbox One S') }}</a>
                             </h3>
-                            <span>{{ __("$298.00") }}</span>
+                            <span>{{ __("৳ 298.00") }}</span>
                         </div>
                     </div>
 
@@ -588,7 +593,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Samsung Gear 360 VR Camera') }}</a>
                             </h3>
-                            <span>{{ __("$68.00") }}</span>
+                            <span>{{ __("৳ 68.00") }}</span>
                         </div>
                     </div>
 
@@ -603,7 +608,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Samsung Galaxy S9+ 64 GB') }}</a>
                             </h3>
-                            <span>{{ __("$840.00") }}</span>
+                            <span>{{ __("৳ 840.00") }}</span>
                         </div>
                     </div>
 
@@ -618,7 +623,7 @@
                             <h3>
                                 <a href="{{ route('products') }}">{{ __('Zeus Bluetooth Headphones') }}</a>
                             </h3>
-                            <span>{{ __("$28.00") }}</span>
+                            <span>{{ __("৳ 28.00") }}</span>
                         </div>
                     </div>
 
@@ -759,7 +764,7 @@
                     </div>
                     <div class="media-body">
                         <h5>{{ __('Free Shipping') }}</h5>
-                        <span>{{ __("On order over $99") }}</span>
+                        <span>{{ __("On order over ৳ 99") }}</span>
                     </div>
                 </li>
 

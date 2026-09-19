@@ -56,11 +56,11 @@
                                 </tr>
                                 <tr>
                                     <th>Regular Amount</th>
-                                    <td>${{ number_format($product->regular_amount, 2) }}</td>
+                                    <td>৳ {{ number_format($product->regular_amount, 2) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Selling Amount</th>
-                                    <td>${{ number_format($product->selling_amount, 2) }}</td>
+                                    <td>৳ {{ number_format($product->selling_amount, 2) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Short Description</th>

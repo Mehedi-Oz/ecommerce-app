@@ -42,7 +42,7 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->category?->name ?? '—' }}</td>
                                     <td>{{ $product->brand?->name ?? '—' }}</td>
-                                    <td class="text-nowrap">${{ number_format($product->selling_amount, 2) }}</td>
+                                    <td class="text-nowrap">৳ {{ number_format($product->selling_amount, 2) }}</td>
                                     <td class="text-nowrap">
                                         @if ($product->stock_amount > 0)
                                             <span class="badge bg-success text-white">{{ $product->stock_amount }}</span>

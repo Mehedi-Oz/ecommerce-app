@@ -15,6 +15,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^3.6.4",
+        "lukepolo/laracart": "^2.7",
         "php-flasher/flasher-laravel": "^2.6",
         "php-flasher/flasher-notyf-laravel": "^2.6"
     },

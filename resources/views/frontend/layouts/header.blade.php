@@ -116,49 +116,50 @@
                                     </a>
                                 </div>
                                 <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
+                                    <a href="{{ route('cart.index') }}" class="main-btn">
                                         <i class="lni lni-cart"></i>
-                                        <span class="total-items">{{ __("2") }}</span>
+                                        <span class="total-items">{{ \LukePOLO\LaraCart\Facades\LaraCart::count() }}</span>
                                     </a>
 
                                     <div class="shopping-item">
                                         <div class="dropdown-cart-header">
-                                            <span>{{ __("2 Items") }}</span>
-                                            <a href="{{ route('cart.show') }}">{{ __("View Cart") }}</a>
+                                            <span>{{ \LukePOLO\LaraCart\Facades\LaraCart::count() }} Items</span>
+                                            <a href="{{ route('cart.index') }}">{{ __('View Cart') }}</a>
                                         </div>
                                         <ul class="shopping-list">
-                                            <li>
-                                                <a href="javascript:void(0)" class="remove"
-                                                    title="{{ __("Remove this item") }}"><i class="lni lni-close"></i></a>
-                                                <div class="cart-img-head">
-                                                    <a class="cart-img" href="{{ route('products') }}"><img
-                                                            src="{{ asset('assets/frontend/images/header/cart-items/item1.jpg') }}"
-                                                            alt="#"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4><a href="{{ route('products') }}">
-                                                            {{ __("Apple Watch Series 6") }}</a></h4>
-                                                    <p class="quantity">{{ __("1x -") }} <span class="amount">{{ __("$99.00") }}</span></p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="remove"
-                                                    title="{{ __("Remove this item") }}"><i class="lni lni-close"></i></a>
-                                                <div class="cart-img-head">
-                                                    <a class="cart-img" href="{{ route('products') }}"><img
-                                                            src="{{ asset('assets/frontend/images/header/cart-items/item2.jpg') }}"
-                                                            alt="#"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4><a href="{{ route('products') }}">{{ __("Wi-Fi Smart Camera") }}</a></h4>
-                                                    <p class="quantity">{{ __("1x -") }} <span class="amount">{{ __("$35.00") }}</span></p>
-                                                </div>
-                                            </li>
+                                            @forelse (\LukePOLO\LaraCart\Facades\LaraCart::getItems() as $headerHash => $headerItem)
+                                                <li>
+                                                    <form action="{{ route('cart.destroy', $headerHash) }}"
+                                                        method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="remove"
+                                                            style="border: 0; background: none; cursor: pointer;"
+                                                            title="{{ __('Remove this item') }}"><i
+                                                                class="lni lni-close"></i></button>
+                                                    </form>
+                                                    <div class="content">
+                                                        <h4><a
+                                                                href="{{ route('products.show', $headerItem->id) }}">{{ $headerItem->name }}</a>
+                                                        </h4>
+                                                        <p class="quantity">{{ $headerItem->qty }}x - <span
+                                                                class="amount">৳ {{ number_format($headerItem->price, 2) }}</span>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            @empty
+                                                <li>
+                                                    <div class="content">
+                                                        <p class="quantity">{{ __('Your cart is empty.') }}</p>
+                                                    </div>
+                                                </li>
+                                            @endforelse
                                         </ul>
                                         <div class="bottom">
                                             <div class="total">
-                                                <span>{{ __("Total") }}</span>
-                                                <span class="total-amount">{{ __("$134.00") }}</span>
+                                                <span>{{ __('Total') }}</span>
+                                                <span
+                                                    class="total-amount">৳ {{ number_format(\LukePOLO\LaraCart\Facades\LaraCart::total(false), 2) }}</span>
                                             </div>
                                             <div class="button">
                                                 <a href="{{ route('checkout') }}" class="btn animate">{{ __("Checkout") }}</a>
@@ -240,7 +241,7 @@
                                             <li class="nav-item"><a href="{{ route('products') }}">{{ __("Shop Grid") }}</a></li>
                                             <li class="nav-item"><a href="product-list.html">{{ __("Shop List") }}</a></li>
                                             <li class="nav-item"><a href="{{ route('products') }}">{{ __("shop Single") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('cart.show') }}">{{ __("Cart") }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('cart.index') }}">{{ __("Cart") }}</a></li>
                                             <li class="nav-item"><a href="{{ route('checkout') }}">{{ __("Checkout") }}</a></li>
                                         </ul>
                                     </li>

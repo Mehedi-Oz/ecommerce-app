@@ -1,16 +1,14 @@
 {
     "agents": [
-        "claude_code",
         "opencode"
     ],
-    "cloud": true,
+    "cloud": false,
     "guidelines": true,
-    "mcp": true,
+    "mcp": false,
     "nightwatch": false,
     "sail": false,
     "skills": [
         "infer-conventions",
-        "deploying-to-cloud",
         "fortify-development",
         "laravel-best-practices",
         "testing-best-practices",

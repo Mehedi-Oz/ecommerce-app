@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f533492e15fed69b732615e5e06f06fe",
+    "content-hash": "868ab906d8576aa12be3d1ae535fdf9d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2523,6 +2523,80 @@
                 }
             ],
             "time": "2026-09-07T16:02:29+00:00"
+        },
+        {
+            "name": "lukepolo/laracart",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lukepolo/laracart.git",
+                "reference": "2c785708203e9269e69683f616f49536d7270498"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lukepolo/laracart/zipball/2c785708203e9269e69683f616f49536d7270498",
+                "reference": "2c785708203e9269e69683f616f49536d7270498",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "illuminate/events": "^11.0 || ^12.0 || ^13.0",
+                "illuminate/session": "^11.0 || ^12.0 || ^13.0",
+                "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^10.0 || ^11.0",
+                "phpunit/php-code-coverage": "^11.0 || ^13.0",
+                "phpunit/phpunit": "^10.5 || ^11.5.3 || ^12.5.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LaraCart": "LukePOLO\\LaraCart\\Facades\\LaraCart"
+                    },
+                    "providers": [
+                        "LukePOLO\\LaraCart\\LaraCartServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LukePOLO\\LaraCart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luke Policinski",
+                    "email": "Luke@LukePOLO.com",
+                    "homepage": "http://LukePOLO.com"
+                }
+            ],
+            "description": "A simple cart for Laravel",
+            "homepage": "https://github.com/lukepolo/laracart",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping",
+                "shopping cart"
+            ],
+            "support": {
+                "issues": "https://github.com/lukepolo/laracart/issues",
+                "source": "https://github.com/lukepolo/laracart/tree/2.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lukepolo",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-25T18:06:53+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

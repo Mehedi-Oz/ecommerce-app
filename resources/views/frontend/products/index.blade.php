@@ -118,8 +118,14 @@
                                                         <span class="sale-tag">-{{ $discount }}%</span>
                                                     @endif
                                                     <div class="button">
-                                                        <a href="{{ route('cart.show') }}" class="btn"><i
-                                                                class="lni lni-cart"></i> Add to Cart</a>
+                                                        <form action="{{ route('cart.store') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{ $product->id }}" />
+                                                            <input type="hidden" name="quantity" value="1" />
+                                                            <button type="submit" class="btn"><i
+                                                                    class="lni lni-cart"></i> Add to Cart</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="product-info">
@@ -130,9 +136,9 @@
                                                         <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                                     </h4>
                                                     <div class="price">
-                                                        <span>${{ number_format($product->selling_amount, 2) }}</span>
+                                                        <span>৳ {{ number_format($product->selling_amount, 2) }}</span>
                                                         @if ($product->regular_amount > $product->selling_amount)
-                                                            <span class="discount-price">${{ number_format($product->regular_amount, 2) }}</span>
+                                                            <span class="discount-price">৳ {{ number_format($product->regular_amount, 2) }}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -179,9 +185,15 @@
                                                                 <span class="sale-tag">-{{ $discount }}%</span>
                                                             @endif
                                                             <div class="button">
-                                                                <a href="{{ route('cart.show') }}" class="btn"><i
-                                                                        class="lni lni-cart"></i> Add to
-                                                                    Cart</a>
+                                                                <form action="{{ route('cart.store') }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" name="product_id"
+                                                                        value="{{ $product->id }}" />
+                                                                    <input type="hidden" name="quantity" value="1" />
+                                                                    <button type="submit" class="btn"><i
+                                                                            class="lni lni-cart"></i> Add to
+                                                                        Cart</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -194,9 +206,9 @@
                                                                 <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                                             </h4>
                                                             <div class="price">
-                                                                <span>${{ number_format($product->selling_amount, 2) }}</span>
+                                                                <span>৳ {{ number_format($product->selling_amount, 2) }}</span>
                                                                 @if ($product->regular_amount > $product->selling_amount)
-                                                                    <span class="discount-price">${{ number_format($product->regular_amount, 2) }}</span>
+                                                                    <span class="discount-price">৳ {{ number_format($product->regular_amount, 2) }}</span>
                                                                 @endif
                                                             </div>
                                                         </div>

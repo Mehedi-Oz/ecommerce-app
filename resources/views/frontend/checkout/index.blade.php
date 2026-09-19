@@ -224,7 +224,7 @@
                                                             <img src="{{ asset('assets/frontend/images/shipping/shipping-1.png') }}"
                                                                 alt="Sipping">
                                                             <p>Standerd Shipping</p>
-                                                            <span class="price">$10.50</span>
+                                                            <span class="price">৳ 10.50</span>
                                                         </label>
                                                     </div>
                                                     <div class="single-payment-option">
@@ -233,7 +233,7 @@
                                                             <img src="{{ asset('assets/frontend/images/shipping/shipping-2.png') }}"
                                                                 alt="Sipping">
                                                             <p>Standerd Shipping</p>
-                                                            <span class="price">$10.50</span>
+                                                            <span class="price">৳ 10.50</span>
                                                         </label>
                                                     </div>
                                                     <div class="single-payment-option">
@@ -242,7 +242,7 @@
                                                             <img src="{{ asset('assets/frontend/images/shipping/shipping-3.png') }}"
                                                                 alt="Sipping">
                                                             <p>Standerd Shipping</p>
-                                                            <span class="price">$10.50</span>
+                                                            <span class="price">৳ 10.50</span>
                                                         </label>
                                                     </div>
                                                     <div class="single-payment-option">
@@ -251,7 +251,7 @@
                                                             <img src="{{ asset('assets/frontend/images/shipping/shipping-4.png') }}"
                                                                 alt="Sipping">
                                                             <p>Standerd Shipping</p>
-                                                            <span class="price">$10.50</span>
+                                                            <span class="price">৳ 10.50</span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -342,21 +342,21 @@
                             <div class="sub-total-price">
                                 <div class="total-price">
                                     <p class="value">Subotal Price:</p>
-                                    <p class="price">$144.00</p>
+                                    <p class="price">৳ 144.00</p>
                                 </div>
                                 <div class="total-price shipping">
                                     <p class="value">Subotal Price:</p>
-                                    <p class="price">$10.50</p>
+                                    <p class="price">৳ 10.50</p>
                                 </div>
                                 <div class="total-price discount">
                                     <p class="value">Subotal Price:</p>
-                                    <p class="price">$10.00</p>
+                                    <p class="price">৳ 10.00</p>
                                 </div>
                             </div>
                             <div class="total-payable">
                                 <div class="payable-price">
                                     <p class="value">Subotal Price:</p>
-                                    <p class="price">$164.50</p>
+                                    <p class="price">৳ 164.50</p>
                                 </div>
                             </div>
                             <div class="price-table-btn button">
