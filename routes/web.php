@@ -18,6 +18,8 @@ Route::delete('/cart', [CartController::class, 'clear'])->name('cart.clear');
 
 /** checkout management routes */
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout/completed', [CheckoutController::class, 'completed'])->name('checkout.completed');
+Route::post('/checkout/cash-on-delivery', [CheckoutController::class, 'storeCashOnDelivery'])->name('checkout.cod.store');
 
 Route::middleware([
     'auth:sanctum',

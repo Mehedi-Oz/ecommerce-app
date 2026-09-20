@@ -32,18 +32,31 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-images">
-                            <main id="gallery">
-                                <div class="main-img">
-                                    <img src="{{ $product->featured_image ? asset($product->featured_image) : asset('assets/frontend/images/product-details/01.jpg') }}"
-                                        id="current" alt="{{ $product->name }}">
-                                </div>
-                                <div class="images">
+                            @php
+                                $mainImage = $product->featured_image
+                                    ? asset($product->featured_image)
+                                    : null;
+                            @endphp
+                            <div class="xzoom-container">
+                                @if ($mainImage)
+                                    <img class="xzoom" id="xzoom-default" src="{{ $mainImage }}"
+                                        xoriginal="{{ $mainImage }}" alt="{{ $product->name }}">
+                                @endif
+                                <div class="xzoom-thumbs">
+                                    @if ($mainImage)
+                                        <a href="{{ $mainImage }}">
+                                            <img class="xzoom-gallery" width="80" src="{{ $mainImage }}"
+                                                alt="{{ $product->name }}" title="{{ $product->name }}">
+                                        </a>
+                                    @endif
                                     @foreach ($product->images as $image)
-                                        <img src="{{ asset($image->image_path) }}" class="img"
-                                            alt="{{ $product->name }}">
+                                        <a href="{{ asset($image->image_path) }}">
+                                            <img class="xzoom-gallery" width="80" src="{{ asset($image->image_path) }}"
+                                                alt="{{ $product->name }}" title="{{ $product->name }}">
+                                        </a>
                                     @endforeach
                                 </div>
-                            </main>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
@@ -172,3 +185,41 @@
         </div>
     </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/xzoom.css') }}" />
+    <style>
+        .item-details .product-images .xzoom-thumbs img {
+            width: 80px;
+        }
+
+        .xzoom-preview {
+            background: #fff !important;
+        }
+
+        .xzoom-preview img {
+            background: #fff !important;
+        }
+
+        .xzoom-lens {
+            background: #fff;
+        }
+    </style>
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/xzoom.min.js') }}"></script>
+    <script>
+        (function($) {
+            $(document).ready(function() {
+                $('.xzoom, .xzoom-gallery').xzoom({
+                    zoomWidth: 400,
+                    title: false,
+                    // tint: '#333',
+                    Xoffset: 15,
+                });
+            });
+        })(jQuery);
+    </script>
+@endpush

@@ -26,7 +26,7 @@ class CartController extends Controller
             'items' => LaraCart::getItems(),
             'subTotal' => LaraCart::subTotal(false),
             'taxTotal' => LaraCart::taxTotal(false),
-            'shipping' => LaraCart::getFee('shipping')->getAmount(false),
+            'shipping' => LaraCart::getFee('shipping')?->getAmount(false) ?? 0,
             'total' => LaraCart::total(false),
         ]);
     }

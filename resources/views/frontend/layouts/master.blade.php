@@ -10,6 +10,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/frontend/images/favicon.svg') }}" />
 
     @include('frontend.layouts.partials.styles')
+
+    @stack('styles')
 </head>
 
 <body>
@@ -34,6 +36,8 @@
     </a>
 
     @include('frontend.layouts.partials.scripts')
+
+    @stack('scripts')
 
 </body>
 
