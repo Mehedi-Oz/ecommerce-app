@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\EcommerceController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,20 @@ Route::delete('/cart', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/checkout/completed', [CheckoutController::class, 'completed'])->name('checkout.completed');
 Route::post('/checkout/cash-on-delivery', [CheckoutController::class, 'storeCashOnDelivery'])->name('checkout.cod.store');
+Route::post('/checkout/online-payment', [CheckoutController::class, 'storeOnlinePayment'])->name('checkout.online.store');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+/** SSLCommerz payment callbacks (POSTed by the gateway, CSRF exempt) */
+Route::post('/checkout/payment/success', [CheckoutController::class, 'paymentSuccess'])->name('checkout.payment.success');
+Route::post('/checkout/payment/fail', [CheckoutController::class, 'paymentFail'])->name('checkout.payment.fail');
+Route::post('/checkout/payment/cancel', [CheckoutController::class, 'paymentCancel'])->name('checkout.payment.cancel');
+Route::post('/checkout/payment/ipn', [CheckoutController::class, 'paymentIpn'])->name('checkout.payment.ipn');
+
+Route::middleware('auth')->prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/orders', [DashboardController::class, 'orders'])->name('dashboard.orders');
+    Route::get('/orders/{order}', [DashboardController::class, 'show'])->name('dashboard.orders.show');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    Route::put('/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update');
+    Route::get('/password', [DashboardController::class, 'password'])->name('dashboard.password');
+    Route::put('/password', [DashboardController::class, 'updatePassword'])->name('dashboard.password.update');
 });

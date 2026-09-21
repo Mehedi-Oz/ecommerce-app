@@ -34,14 +34,20 @@
                             <li>
                                 <section class="checkout-steps-form-content"
                                     style="border-top-color: #e6e6e6; border-radius: 4px; padding-top: 25px;">
+                                    @php
+                                        $showOnline = old('payment_method', 'cash_on_delivery') === 'online';
+                                    @endphp
+
                                     <div class="row mb-4">
                                         <div class="col-12">
                                             <div class="btn-group w-100" role="group" aria-label="Payment method">
-                                                <button type="button" class="btn btn-primary flex-fill"
+                                                <button type="button"
+                                                    class="btn {{ $showOnline ? 'btn-outline-primary' : 'btn-primary' }} flex-fill"
                                                     id="btn-cash-on-delivery" onclick="showPaymentMethod('cod')">
                                                     {{ __('Cash on Delivery') }}
                                                 </button>
-                                                <button type="button" class="btn btn-outline-primary flex-fill"
+                                                <button type="button"
+                                                    class="btn {{ $showOnline ? 'btn-primary' : 'btn-outline-primary' }} flex-fill"
                                                     id="btn-online-payment" onclick="showPaymentMethod('online')">
                                                     {{ __('Online Payment') }}
                                                 </button>
@@ -49,9 +55,20 @@
                                         </div>
                                     </div>
 
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" id="checkout-validation-alert">
+                                            <ul class="mb-0 mt-1">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
                                     {{-- Cash on Delivery form --}}
-                                    <div class="row" id="payment-cod">
-                                        <form action="{{ route('checkout.cod.store') }}" method="POST">
+                                    <div class="row {{ $showOnline ? 'd-none' : '' }}" id="payment-cod">
+                                        <form action="{{ route('checkout.cod.store') }}" method="POST"
+                                            onsubmit="document.getElementById('cod-confirm-btn').disabled = true;">
                                             @csrf
                                             <input type="hidden" name="payment_method" value="cash_on_delivery">
                                             <div class="row">
@@ -116,7 +133,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="single-form button">
-                                                        <button type="submit" class="btn">
+                                                        <button type="submit" class="btn" id="cod-confirm-btn">
                                                             {{ __('Confirm Order') }}
                                                         </button>
                                                     </div>
@@ -126,8 +143,9 @@
                                     </div>
 
                                     {{-- Online Payment form --}}
-                                    <div class="row d-none" id="payment-online">
-                                        <form action="#" method="POST" onsubmit="return false;">
+                                    <div class="row {{ $showOnline ? '' : 'd-none' }}" id="payment-online">
+                                        <form action="{{ route('checkout.online.store') }}" method="POST"
+                                            onsubmit="document.getElementById('online-confirm-btn').disabled = true;">
                                             @csrf
                                             <input type="hidden" name="payment_method" value="online">
                                             <div class="row">
@@ -172,9 +190,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
+                                                    <div class="single-form form-default">
+                                                        <div class="form-check mb-2">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="cod_payment_option" id="online-selected"
+                                                                value="online" checked>
+                                                            <label class="form-check-label" for="online-selected">
+                                                                {{ __('SSLCommerz (bKash, Nagad, Rocket, Cards, Internet Banking)') }}
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="terms" id="online-terms" value="1" required>
+                                                            <label class="form-check-label" for="online-terms">
+                                                                {{ __('I accept terms and conditions') }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
                                                     <div class="single-form button">
-                                                        <button type="submit" class="btn" disabled>
-                                                            {{ __('Online Payment Coming Soon') }}
+                                                        <button type="submit" class="btn" id="online-confirm-btn">
+                                                            {{ __('Pay Online') }}
                                                         </button>
                                                     </div>
                                                 </div>
@@ -257,6 +294,16 @@
 
 @push('scripts')
     <script>
+        @if ($errors->any())
+            window.addEventListener('load', function () {
+                const alertEl = document.getElementById('checkout-validation-alert');
+
+                if (alertEl) {
+                    alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        @endif
+
         function showPaymentMethod(method) {
             const codSection = document.getElementById('payment-cod');
             const onlineSection = document.getElementById('payment-online');

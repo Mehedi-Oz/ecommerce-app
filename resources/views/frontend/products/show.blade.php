@@ -76,6 +76,13 @@
                                 <p class="category"><i class="lni lni-tag"></i> {{ __('Brand:') }}
                                     {{ $product->brand->name }}</p>
                             @endif
+                            <p class="category"><i class="lni lni-tag"></i> {{ __('Stock:') }}
+                                @if ($product->stock_amount > 0)
+                                    {{ __(':count items available', ['count' => $product->stock_amount]) }}
+                                @else
+                                    {{ __('Out of stock') }}
+                                @endif
+                            </p>
                             <h3 class="price">৳ {{ number_format($product->selling_amount, 2) }}@if ($product->regular_amount > $product->selling_amount)
                                     <span>৳ {{ number_format($product->regular_amount, 2) }}</span>
                                 @endif
@@ -83,29 +90,42 @@
                             @if ($product->short_description)
                                 <p class="info-text">{{ $product->short_description }}</p>
                             @endif
-                            <form action="{{ route('cart.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}" />
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12">
-                                        <div class="form-group quantity">
-                                            <label for="quantity">Quantity</label>
-                                            <input type="number" class="form-control" id="quantity" name="quantity"
-                                                value="1" min="1" max="{{ $product->stock_amount }}" />
+                            @if ($product->stock_amount > 0)
+                                <form action="{{ route('cart.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="form-group quantity">
+                                                <label for="quantity">Quantity</label>
+                                                <input type="number" class="form-control" id="quantity" name="quantity"
+                                                    value="1" min="1" max="{{ $product->stock_amount }}" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="bottom-content">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-12 col-md-12 col-12">
+                                                <div class="button cart-button">
+                                                    <button type="submit" class="btn"
+                                                        style="width: 100%;">{{ __('Add to Cart') }}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            @else
                                 <div class="bottom-content">
                                     <div class="row align-items-end">
                                         <div class="col-lg-12 col-md-12 col-12">
                                             <div class="button cart-button">
-                                                <button type="submit" class="btn"
-                                                    style="width: 100%;">{{ __('Add to Cart') }}</button>
+                                                <button type="button" class="btn" style="width: 100%;"
+                                                    disabled>{{ __('Stock Out') }}</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,7 @@
         <div class="container">
             <div class="cart-list-head">
 
-                <div class="cart-list-title">
+                <div class="cart-list-title d-none d-md-block">
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-12">
                         </div>
@@ -45,7 +45,7 @@
                         <div class="col-lg-2 col-md-2 col-12">
                             <p>Subtotal</p>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-12">
+                        <div class="col-lg-2 col-md-2 col-12 text-center">
                             <p>Remove</p>
                         </div>
                     </div>
@@ -55,19 +55,27 @@
                 @forelse ($items as $hash => $item)
                     <div class="cart-single-list">
                         <div class="row align-items-center">
-                            <div class="col-lg-1 col-md-1 col-12">
+                            {{-- Product image --}}
+                            <div class="col-lg-1 col-md-1 col-3">
                                 <a href="{{ route('products.show', $item->id) }}"><img
                                         src="{{ $item->image }}"
                                         alt="{{ $item->name }}"></a>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-12">
+                            {{-- Product name --}}
+                            <div class="col-lg-3 col-md-3 col-9 text-start">
                                 <h5 class="product-name"><a href="{{ route('products.show', $item->id) }}">
                                         {{ $item->name }}</a></h5>
+                                <p class="d-md-none mb-0 cart-mobile-price">৳ {{ number_format($item->price, 2) }}</p>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-12">
-                                <p>৳ {{ number_format($item->price, 2) }}</p>
+
+                            {{-- Desktop-only price column --}}
+                            <div class="col-lg-2 col-md-2 d-none d-md-block">
+                                <p class="mb-0">৳ {{ number_format($item->price, 2) }}</p>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-12">
+
+                            {{-- Quantity --}}
+                            <div class="col-lg-2 col-md-2 col-4 mt-3 mt-md-0">
+                                <span class="cart-mobile-label d-md-none">Qty</span>
                                 <div class="count-input">
                                     <form action="{{ route('cart.update', $hash) }}" method="POST">
                                         @csrf
@@ -81,11 +89,17 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-12">
-                                <p>৳ {{ number_format($item->subTotal(), 2) }}</p>
+
+                            {{-- Subtotal --}}
+                            <div class="col-lg-2 col-md-2 col-6 mt-3 mt-md-0 text-center text-md-start">
+                                <span class="cart-mobile-label d-md-none">Subtotal</span>
+                                <p class="mb-0">৳ {{ number_format($item->subtotal(), 2) }}</p>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-12">
-                                <form action="{{ route('cart.destroy', $hash) }}" method="POST">
+
+                            {{-- Remove button --}}
+                            <div class="col-lg-2 col-md-2 col-2 mt-3 mt-md-0 d-flex flex-column align-items-end align-items-md-center justify-content-center">
+                                <span class="cart-mobile-label d-md-none invisible">&nbsp;</span>
+                                <form action="{{ route('cart.destroy', $hash) }}" method="POST" class="d-flex justify-content-center align-items-center">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="remove-item"
@@ -100,7 +114,9 @@
                         <div class="row align-items-center">
                             <div class="col-12 text-center py-4">
                                 <p>{{ __('Your cart is empty.') }}</p>
-                                <a href="{{ route('products') }}" class="btn mt-2">{{ __('Continue shopping') }}</a>
+                                <div class="button d-flex justify-content-center mt-2">
+                                    <a href="{{ route('products') }}" class="btn">{{ __('Continue shopping') }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,28 +126,18 @@
             @if (count($items) > 0)
                 <div class="row">
                     <div class="col-12">
-                        <div class="d-flex justify-content-end mb-3">
-                            <form action="{{ route('cart.clear') }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-alt">{{ __('Clear cart') }}</button>
-                            </form>
+                        <div class="d-flex justify-content-end mt-3 mb-3">
+                            <div class="button mb-0">
+                                <form action="{{ route('cart.clear') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-alt">{{ __('Clear cart') }}</button>
+                                </form>
+                            </div>
                         </div>
 
                         <div class="total-amount">
                             <div class="row">
-                                <div class="col-lg-8 col-md-6 col-12">
-                                    <div class="left">
-                                        <div class="coupon">
-                                            <form action="#" target="_blank">
-                                                <input name="Coupon" placeholder="Enter Your Coupon">
-                                                <div class="button">
-                                                    <button class="btn">Apply Coupon</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="right">
                                         <ul>

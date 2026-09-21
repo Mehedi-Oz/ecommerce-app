@@ -118,14 +118,19 @@
                                                         <span class="sale-tag">-{{ $discount }}%</span>
                                                     @endif
                                                     <div class="button">
-                                                        <form action="{{ route('cart.store') }}" method="POST">
-                                                            @csrf
-                                                            <input type="hidden" name="product_id"
-                                                                value="{{ $product->id }}" />
-                                                            <input type="hidden" name="quantity" value="1" />
-                                                            <button type="submit" class="btn"><i
-                                                                    class="lni lni-cart"></i> Add to Cart</button>
-                                                        </form>
+                                                        @if ($product->stock_amount > 0)
+                                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $product->id }}" />
+                                                                <input type="hidden" name="quantity" value="1" />
+                                                                <button type="submit" class="btn"><i
+                                                                        class="lni lni-cart"></i> Add to Cart</button>
+                                                            </form>
+                                                        @else
+                                                            <button type="button" class="btn" disabled><i
+                                                                    class="lni lni-cart"></i> {{ __('Stock Out') }}</button>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="product-info">
@@ -185,15 +190,21 @@
                                                                 <span class="sale-tag">-{{ $discount }}%</span>
                                                             @endif
                                                             <div class="button">
-                                                                <form action="{{ route('cart.store') }}" method="POST">
-                                                                    @csrf
-                                                                    <input type="hidden" name="product_id"
-                                                                        value="{{ $product->id }}" />
-                                                                    <input type="hidden" name="quantity" value="1" />
-                                                                    <button type="submit" class="btn"><i
-                                                                            class="lni lni-cart"></i> Add to
-                                                                        Cart</button>
-                                                                </form>
+                                                                @if ($product->stock_amount > 0)
+                                                                    <form action="{{ route('cart.store') }}" method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" name="product_id"
+                                                                            value="{{ $product->id }}" />
+                                                                        <input type="hidden" name="quantity" value="1" />
+                                                                        <button type="submit" class="btn"><i
+                                                                                class="lni lni-cart"></i> Add to
+                                                                            Cart</button>
+                                                                    </form>
+                                                                @else
+                                                                    <button type="button" class="btn" disabled><i
+                                                                            class="lni lni-cart"></i>
+                                                                        {{ __('Stock Out') }}</button>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

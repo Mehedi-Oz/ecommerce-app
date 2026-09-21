@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Both the admin and storefront themes are Bootstrap-based with no
+        // Tailwind loaded, so render Bootstrap pagination (text arrows)
+        // instead of the Tailwind default whose SVG arrows render huge.
+        Paginator::useBootstrapFive();
+
         View::composer('frontend.layouts.header', function ($view): void {
             $view->with('navCategories', Category::query()
                 ->where('status', 'published')

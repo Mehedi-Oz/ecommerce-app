@@ -24,6 +24,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => Authenticate::class,
             'guest' => RedirectIfAuthenticated::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'checkout/payment/success',
+            'checkout/payment/fail',
+            'checkout/payment/cancel',
+            'checkout/payment/ipn',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

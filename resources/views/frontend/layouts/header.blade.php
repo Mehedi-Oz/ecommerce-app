@@ -3,7 +3,7 @@
         <div class="topbar">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-6 col-md-6 col-12">
                         <div class="top-left">
                             <ul class="menu-top-link">
                                 <li>
@@ -34,29 +34,31 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="top-middle">
-                            <ul class="useful-links">
-                                <li><a href="{{ route('home') }}">{{ __("Home") }}</a></li>
-                                <li><a href="about-us.html">{{ __("About Us") }}</a></li>
-                                <li><a href="contact.html">{{ __("Contact Us") }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-6 col-md-6 col-12">
                         <div class="top-end">
-                            <div class="user">
-                                <i class="lni lni-user"></i>
-                                {{ __("Hello") }}
-                            </div>
-                            <ul class="user-login">
-                                <li>
-                                    <a href="login.html">{{ __("Sign In") }}</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">{{ __("Register") }}</a>
-                                </li>
-                            </ul>
+                            @auth
+                                <ul class="user-login">
+                                    <li>
+                                        <a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                            @csrf
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Logout') }}</a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="user-login">
+                                    <li>
+                                        <a href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                </ul>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -216,18 +218,14 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="{{ route('home') }}" class="active" aria-label="{{ __("Toggle navigation") }}">{{ __("Home") }}</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)"
                                             data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="{{ __("Toggle navigation") }}">{{ __("Pages") }}</a>
                                         <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="about-us.html">{{ __("About Us") }}</a></li>
                                             <li class="nav-item"><a href="faq.html">{{ __("Faq") }}</a></li>
-                                            <li class="nav-item"><a href="login.html">{{ __("Login") }}</a></li>
-                                            <li class="nav-item"><a href="register.html">{{ __("Register") }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('login') }}">{{ __("Login") }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('register') }}">{{ __("Register") }}</a></li>
                                             <li class="nav-item"><a href="mail-success.html">{{ __("Mail Success") }}</a></li>
                                             <li class="nav-item"><a href="404.html">{{ __("404 Error") }}</a></li>
                                         </ul>
@@ -258,9 +256,6 @@
                                             <li class="nav-item"><a href="blog-single-sidebar.html">{{ __("Blog Single
                                                     Sibebar") }}</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="contact.html" aria-label="{{ __("Toggle navigation") }}">{{ __("Contact Us") }}</a>
                                     </li>
                                 </ul>
                             </div>

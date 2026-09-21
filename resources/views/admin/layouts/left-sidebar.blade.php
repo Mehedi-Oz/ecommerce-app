@@ -67,11 +67,14 @@
                                 class="@if (request()->routeIs('admin.products.*') && ! request()->routeIs('admin.products.create')) active @endif">Manage</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                <li class="@if (request()->routeIs('admin.orders.*')) active @endif"> <a
+                        class="has-arrow waves-effect waves-dark @if (request()->routeIs('admin.orders.*')) active @endif"
+                        href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-shopping-cart"></i><span class="hide-menu">Order</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Manage</a></li>
+                    <ul aria-expanded="false"
+                        class="collapse @if (request()->routeIs('admin.orders.*')) in @endif">
+                        <li><a href="{{ route('admin.orders.index') }}"
+                                class="@if (request()->routeIs('admin.orders.*')) active @endif">Manage</a></li>
                     </ul>
                 </li>
             </ul>
