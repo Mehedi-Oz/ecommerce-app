@@ -35,7 +35,6 @@ class User extends Authenticatable
         'address',
         'date_of_birth',
         'nid',
-        'image',
         'password',
     ];
 

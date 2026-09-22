@@ -76,11 +76,8 @@
                         </a>
 
                     </div>
-                    <div class="col-lg-5 col-md-7 d-xs-none">
-
-                        <div class="main-menu-search">
-
-                            <div class="navbar-search search-style-5">
+                    <div class="col-lg-6 col-md-6 d-xs-none">
+                        <div class="main-menu-search">                            <div class="navbar-search search-style-5">
                                 <div class="search-select">
                                     <div class="select-position">
                                         <select id="select1">
@@ -102,21 +99,9 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-4 col-md-2 col-5">
+                    <div class="col-lg-3 col-md-3 col-5">
                         <div class="middle-right-area">
-                            <div class="nav-hotline">
-                                <i class="lni lni-phone"></i>
-                                <h3>{{ __("Hotline:") }}
-                                    <span>{{ __("(+100) 123 456 7890") }}</span>
-                                </h3>
-                            </div>
-                            <div class="navbar-cart">
-                                <div class="wishlist">
-                                    <a href="javascript:void(0)">
-                                        <i class="lni lni-heart"></i>
-                                        <span class="total-items">{{ __("0") }}</span>
-                                    </a>
-                                </div>
+                            <div class="navbar-cart ms-auto">
                                 <div class="cart-items">
                                     <a href="{{ route('cart.index') }}" class="main-btn">
                                         <i class="lni lni-cart"></i>
@@ -164,7 +149,11 @@
                                                     class="total-amount">৳ {{ number_format(\LukePOLO\LaraCart\Facades\LaraCart::total(false), 2) }}</span>
                                             </div>
                                             <div class="button">
-                                                <a href="{{ route('checkout') }}" class="btn animate">{{ __("Checkout") }}</a>
+                                                @if (\LukePOLO\LaraCart\Facades\LaraCart::count() > 0)
+                                                    <a href="{{ route('checkout') }}" class="btn animate">{{ __("Checkout") }}</a>
+                                                @else
+                                                    <a href="{{ route('products') }}" class="btn animate">{{ __("Continue Shopping") }}</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -218,43 +207,36 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
+                                        <a href="{{ route('home') }}">{{ __('Home') }}</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                            data-bs-toggle="collapse" data-bs-target="#submenu-shop"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="{{ __("Toggle navigation") }}">{{ __("Pages") }}</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="faq.html">{{ __("Faq") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('login') }}">{{ __("Login") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('register') }}">{{ __("Register") }}</a></li>
-                                            <li class="nav-item"><a href="mail-success.html">{{ __("Mail Success") }}</a></li>
-                                            <li class="nav-item"><a href="404.html">{{ __("404 Error") }}</a></li>
+                                            aria-label="{{ __('Toggle navigation') }}">{{ __('Shop') }}</a>
+                                        <ul class="sub-menu collapse" id="submenu-shop">
+                                            <li class="nav-item"><a href="{{ route('products') }}">{{ __('All Products') }}</a></li>
+                                            <li class="nav-item"><a href="{{ route('cart.index') }}">{{ __('Shopping Cart') }}</a></li>
+                                            @if (\LukePOLO\LaraCart\Facades\LaraCart::count() > 0)
+                                                <li class="nav-item"><a href="{{ route('checkout') }}">{{ __('Checkout') }}</a></li>
+                                            @endif
+                                            <li class="nav-item"><a href="{{ route('dashboard.orders') }}">{{ __('Track Your Order') }}</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
+                                            data-bs-toggle="collapse" data-bs-target="#submenu-account"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="{{ __("Toggle navigation") }}">{{ __("Shop") }}</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-3">
-                                            <li class="nav-item"><a href="{{ route('products') }}">{{ __("Shop Grid") }}</a></li>
-                                            <li class="nav-item"><a href="product-list.html">{{ __("Shop List") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('products') }}">{{ __("shop Single") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('cart.index') }}">{{ __("Cart") }}</a></li>
-                                            <li class="nav-item"><a href="{{ route('checkout') }}">{{ __("Checkout") }}</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="{{ __("Toggle navigation") }}">{{ __("Blog") }}</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="blog-grid-sidebar.html">{{ __("Blog Grid
-                                                    Sidebar") }}</a>
-                                            </li>
-                                            <li class="nav-item"><a href="blog-single.html">{{ __("Blog Single") }}</a></li>
-                                            <li class="nav-item"><a href="blog-single-sidebar.html">{{ __("Blog Single
-                                                    Sibebar") }}</a></li>
+                                            aria-label="{{ __('Toggle navigation') }}">{{ __('My Account') }}</a>
+                                        <ul class="sub-menu collapse" id="submenu-account">
+                                            @auth
+                                                <li class="nav-item"><a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a></li>
+                                                <li class="nav-item"><a href="{{ route('dashboard.orders') }}">{{ __('My Orders') }}</a></li>
+                                                <li class="nav-item"><a href="{{ route('dashboard.profile') }}">{{ __('Profile Settings') }}</a></li>
+                                            @else
+                                                <li class="nav-item"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                                                <li class="nav-item"><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                                            @endauth
                                         </ul>
                                     </li>
                                 </ul>

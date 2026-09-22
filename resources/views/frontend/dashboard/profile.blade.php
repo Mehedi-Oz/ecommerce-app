@@ -46,10 +46,32 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('dashboard.profile.update') }}" method="POST">
+                            <form action="{{ route('dashboard.profile.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="single-form form-default">
+                                            <label>{{ __('Profile Photo') }}</label>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="{{ $photoUrl }}" alt="{{ $user->name }}"
+                                                    class="dashboard-profile-photo">
+                                                <div class="flex-grow-1">
+                                                    <input type="file" name="photo" accept="image/*" class="form-control">
+                                                    <small class="text-muted text-sm">{{ __('(JPG, PNG or WebP, max 2MB.)') }}</small>
+                                                    @if ($user->profile_photo_path)
+                                                        <div class="form-check mt-1">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="remove_photo" id="remove-photo" value="1">
+                                                            <label class="form-check-label" for="remove-photo">
+                                                                {{ __('Remove current photo') }}
+                                                            </label>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="single-form form-default">
                                             <label>{{ __('Full Name') }}</label>
@@ -112,3 +134,15 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+    <style>
+        .dashboard-profile-photo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+    </style>
+@endpush

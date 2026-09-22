@@ -109,8 +109,6 @@ class CheckoutController extends Controller
             return redirect()->route('checkout')->withInput();
         }
 
-        session(['sslcommerz_order_id' => $order->id]);
-
         LaraCart::emptyCart();
 
         return redirect()->away($gatewayUrl);
@@ -229,7 +227,6 @@ class CheckoutController extends Controller
 
     /**
      * Log the user in after a successful guest checkout.
-     *
      */
     private function loginOrCreateUser(User $user): bool
     {

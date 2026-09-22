@@ -7,7 +7,7 @@
                         <div class="col-lg-3 col-md-4 col-12">
                             <div class="footer-logo">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('assets/frontend/images/logo/white-logo.svg') }}" alt="#">
+                                    <img src="{{ asset('assets/frontend/images/logo/white-logo.png') }}" alt="#">
                                 </a>
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                         </div>
                         <div class="col-lg-4 col-12">
                             <div class="copyright">
-                                <p>{{ __("Designed and Developed by") }}<a href="https://graygrids.com/" rel="nofollow"
-                                        target="_blank">{{ __("GrayGrids") }}</a></p>
+                                <p>&copy; {{ date("Y") }} {{ config("app.name") }} by <a href="https://github.com/Mehedi-Oz"
+                                        rel="nofollow" target="_blank">Hasan</a></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">

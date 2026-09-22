@@ -1,0 +1,11 @@
+/* Restore Bootstrap pagination layout: the theme's .pagination class
+   targets its own blog markup and otherwise stacks Bootstrap's
+   page items vertically. */
+ul.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}

@@ -37,4 +37,5 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::put('/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update');
     Route::get('/password', [DashboardController::class, 'password'])->name('dashboard.password');
     Route::put('/password', [DashboardController::class, 'updatePassword'])->name('dashboard.password.update');
+    Route::get('/profile-photo/{user}', [DashboardController::class, 'photo'])->name('profile.photo');
 });
