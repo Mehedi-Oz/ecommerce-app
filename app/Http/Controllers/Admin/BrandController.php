@@ -91,4 +91,14 @@ class BrandController extends Controller
 
         return redirect()->route('admin.brands.index');
     }
+
+    public function toggleFeatured(Brand $brand): RedirectResponse
+    {
+        $brand->update([
+            'is_featured' => ! $brand->is_featured,
+        ]);
+        NotificationService::updated();
+
+        return redirect()->route('admin.brands.index');
+    }
 }

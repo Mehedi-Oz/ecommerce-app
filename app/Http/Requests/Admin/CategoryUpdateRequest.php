@@ -25,6 +25,7 @@ class CategoryUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', 'unique:categories,name,'.$this->route('category')->id],
             'description' => ['nullable', 'string', 'max:2000'],
+            'is_featured' => ['sometimes', 'boolean'],
             'status' => ['sometimes', 'in:published,unpublished'],
         ];
     }

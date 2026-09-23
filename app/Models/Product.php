@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
@@ -65,5 +67,40 @@ class Product extends Model
     public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('status', 'published');
+    }
+
+    public function scopeTrending(Builder $query): Builder
+    {
+        return $query->orderByDesc('hit_count')->orderByDesc('sales_count')->latest();
+    }
+
+    public function scopeBestSellers(Builder $query): Builder
+    {
+        return $query->orderByDesc('sales_count')->orderByDesc('hit_count');
+    }
+
+    public function scopeNewArrivals(Builder $query): Builder
+    {
+        return $query->latest();
+    }
+
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('featured_status', 'featured');
+    }
+
+    public function scopeByTag(Builder $query, string $slug): Builder
+    {
+        return $query->whereHas('tags', fn (Builder $tag) => $tag->where('slug', $slug));
     }
 }

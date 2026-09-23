@@ -1,1 +1,0 @@
-{{-- Admin registration is not supported. Admin accounts are provisioned via seeder or externally. --}}

@@ -104,14 +104,14 @@ class DashboardController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            if ($user->profile_photo_path !== null) {
-                Storage::delete($user->profile_photo_path);
+            if ($user->image !== null) {
+                Storage::delete($user->image);
             }
 
-            $user->profile_photo_path = $request->file('photo')->store('profile-photos');
-        } elseif ($request->boolean('remove_photo') && $user->profile_photo_path !== null) {
-            Storage::delete($user->profile_photo_path);
-            $user->profile_photo_path = null;
+            $user->image = $request->file('photo')->store('profile-photos');
+        } elseif ($request->boolean('remove_photo') && $user->image !== null) {
+            Storage::delete($user->image);
+            $user->image = null;
         }
 
         unset($validated['photo'], $validated['remove_photo']);
@@ -135,14 +135,14 @@ class DashboardController extends Controller
     public function photo(Request $request, User $user): BinaryFileResponse
     {
         abort_if($request->user()->id !== $user->id, 404);
-        abort_if($user->profile_photo_path === null || ! Storage::exists($user->profile_photo_path), 404);
+        abort_if($user->image === null || ! Storage::exists($user->image), 404);
 
-        return response()->file(Storage::path($user->profile_photo_path));
+        return response()->file(Storage::path($user->image));
     }
 
     private function photoUrl(User $user): string
     {
-        return $user->profile_photo_path !== null
+        return $user->image !== null
             ? route('profile.photo', $user)
             : $user->profile_photo_url;
     }

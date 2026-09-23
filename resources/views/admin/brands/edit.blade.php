@@ -37,6 +37,11 @@
                             <option value="unpublished" @selected(old('status', $brand->status) === 'unpublished')>Unpublished</option>
                         </x-admin.input-select>
 
+                        <x-admin.input-select name="is_featured" :label="__('Featured')" :selected="old('is_featured', (string) $brand->is_featured)">
+                            <option value="1" @selected(old('is_featured', (string) $brand->is_featured) === '1')>Yes</option>
+                            <option value="0" @selected(old('is_featured', (string) $brand->is_featured) === '0')>No</option>
+                        </x-admin.input-select>
+
                         <div class="mt-3">
                             <x-admin.submit-button :label="__('Update Brand')" />
                         </div>

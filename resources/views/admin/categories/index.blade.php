@@ -16,6 +16,7 @@
                                 <th class="text-nowrap">#</th>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th class="text-nowrap">Featured</th>
                                 <th class="text-nowrap">Status</th>
                                 <th class="text-nowrap">Created At</th>
                                 <th class="text-nowrap">Actions</th>
@@ -33,6 +34,22 @@
                                         @else
                                             <span class="text-muted">&mdash;</span>
                                         @endif
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <form action="{{ route('admin.categories.featured', $category) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            @if ($category->is_featured)
+                                                <button type="submit" title="Unfeature category"
+                                                    class="btn btn-sm text-warning border-0 bg-transparent"><i
+                                                        class="fas fa-star"></i></button>
+                                            @else
+                                                <button type="submit" title="Feature category"
+                                                    class="btn btn-sm text-muted border-0 bg-transparent"><i
+                                                        class="far fa-star"></i></button>
+                                            @endif
+                                        </form>
                                     </td>
                                     <td class="text-nowrap">
                                         @if ($category->status === 'published')
@@ -77,7 +94,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No categories found</td>
+                                    <td colspan="7" class="text-center">No categories found</td>
                                 </tr>
                             @endforelse
                         </tbody>

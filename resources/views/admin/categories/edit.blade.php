@@ -20,6 +20,11 @@
                         <x-admin.input-text-area name="description" :label="__('Description')"
                             placeholder="e.g. Mobile phones, laptops and accessories" :value="$category->description" />
 
+                        <x-admin.input-select name="is_featured" :label="__('Featured')" :selected="old('is_featured', (string) (int) $category->is_featured)">
+                            <option value="1" @selected(old('is_featured', (string) (int) $category->is_featured) === '1')>Yes</option>
+                            <option value="0" @selected(old('is_featured', (string) (int) $category->is_featured) === '0')>No</option>
+                        </x-admin.input-select>
+
                         <x-admin.input-select name="status" :label="__('Status')" :selected="old('status', $category->status)">
                             <option value="published" @selected(old('status', $category->status) === 'published')>Published</option>
                             <option value="unpublished" @selected(old('status', $category->status) === 'unpublished')>Unpublished</option>

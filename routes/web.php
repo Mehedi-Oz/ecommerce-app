@@ -30,9 +30,15 @@ Route::post('/checkout/payment/cancel', [CheckoutController::class, 'paymentCanc
 Route::post('/checkout/payment/ipn', [CheckoutController::class, 'paymentIpn'])->name('checkout.payment.ipn');
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
+
+    /** Dashboard Management Routes */
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    /** Orders Management Routes */
     Route::get('/orders', [DashboardController::class, 'orders'])->name('dashboard.orders');
     Route::get('/orders/{order}', [DashboardController::class, 'show'])->name('dashboard.orders.show');
+
+    /** User-Profile Management Routes */
     Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
     Route::put('/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update');
     Route::get('/password', [DashboardController::class, 'password'])->name('dashboard.password');

@@ -137,13 +137,6 @@
                         </table>
                     </div>
 
-                    <div class="mt-4">
-                        <a href="{{ route('admin.orders.edit', $order) }}"
-                            class="btn btn-primary text-white me-2"><i class="fas fa-pencil-alt"></i> Edit</a>
-                        <a href="{{ route('admin.orders.index') }}" class="btn btn-secondary"><i
-                                class="fas fa-arrow-left"></i> Back</a>
-                    </div>
-
                     <h5 class="mt-4 mb-3">Status History</h5>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
@@ -172,6 +165,13 @@
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="{{ route('admin.orders.edit', $order) }}"
+                            class="btn btn-primary text-white me-2"><i class="fas fa-pencil-alt"></i> Edit</a>
+                        <a href="{{ route('admin.orders.index') }}" class="btn btn-secondary"><i
+                                class="fas fa-arrow-left"></i> Back</a>
                     </div>
                 </div>
             </div>

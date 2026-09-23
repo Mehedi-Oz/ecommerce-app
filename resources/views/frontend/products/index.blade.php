@@ -1,7 +1,16 @@
 @extends('frontend.layouts.master')
 
+@push('styles')
+    <style>
+        .product-sidebar .single-widget .list li.active a {
+            color: #0167f3;
+            font-weight: 600;
+        }
+    </style>
+@endpush
+
 @section('title')
-    {{ __('Category') }}
+    {{ __('Products') }}
 @endsection
 
 @section('content')
@@ -10,14 +19,14 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Shop Grid</h1>
+                        <h1 class="page-title">Products</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
                         <li><a href="javascript:void(0)">Shop</a></li>
-                        <li>Shop Grid</li>
+                        <li>Products</li>
                     </ul>
                 </div>
             </div>
@@ -43,13 +52,14 @@
 
                         <div class="single-widget">
                             <h3>All Categories</h3>
+                            @php $activeCategoryId = request()->integer('category'); @endphp
                             <ul class="list">
-                                <li>
-                                    <a href="{{ route('products') }}">{{ __('All Products') }}</a><span>({{ $categories->sum('products_count') }})</span>
+                                <li @class(['active' => $activeCategoryId === 0])>
+                                    <a href="{{ route('products', array_filter(['sort' => request('sort')])) }}" @if ($activeCategoryId === 0) aria-current="page" @endif>{{ __('All Products') }}</a><span>({{ $categories->sum('products_count') }})</span>
                                 </li>
                                 @forelse ($categories as $category)
-                                    <li>
-                                        <a href="{{ route('products', ['category' => $category->id]) }}">{{ $category->name }}</a><span>({{ $category->products_count }})</span>
+                                    <li @class(['active' => $activeCategoryId === (int) $category->id])>
+                                        <a href="{{ route('products', array_filter(['category' => $category->id, 'sort' => request('sort')])) }}" @if ($activeCategoryId === (int) $category->id) aria-current="page" @endif>{{ $category->name }}</a><span>({{ $category->products_count }})</span>
                                     </li>
                                 @empty
                                     <li>
@@ -69,14 +79,22 @@
                                 <div class="col-lg-7 col-md-8 col-12">
                                     <div class="product-sorting">
                                         <label for="sorting">Sort by:</label>
-                                        <select class="form-control" id="sorting">
-                                            <option>Popularity</option>
-                                            <option>Low - High Price</option>
-                                            <option>High - Low Price</option>
-                                            <option>Average Rating</option>
-                                            <option>A - Z Order</option>
-                                            <option>Z - A Order</option>
-                                        </select>
+                                        <form method="GET" action="{{ route('products') }}" id="product-sorting-form" class="d-inline">
+                                            @if (request('category'))
+                                                <input type="hidden" name="category" value="{{ request('category') }}">
+                                            @endif
+                                            @if (request('subcategory'))
+                                                <input type="hidden" name="subcategory" value="{{ request('subcategory') }}">
+                                            @endif
+                                            <select class="form-control" id="sorting" name="sort" onchange="document.getElementById('product-sorting-form').submit()">
+                                                <option value="popularity" @selected(($sort ?? request('sort', 'popularity')) === 'popularity')>Popularity</option>
+                                                <option value="price_asc" @selected(($sort ?? request('sort', 'popularity')) === 'price_asc')>Low - High Price</option>
+                                                <option value="price_desc" @selected(($sort ?? request('sort', 'popularity')) === 'price_desc')>High - Low Price</option>
+                                                <option value="rating" @selected(($sort ?? request('sort', 'popularity')) === 'rating')>Average Rating</option>
+                                                <option value="name_asc" @selected(($sort ?? request('sort', 'popularity')) === 'name_asc')>A - Z Order</option>
+                                                <option value="name_desc" @selected(($sort ?? request('sort', 'popularity')) === 'name_desc')>Z - A Order</option>
+                                            </select>
+                                        </form>
                                         <h3 class="total-show-product">Showing: <span>{{ $products->firstItem() ?? 0 }} - {{ $products->lastItem() ?? 0 }} items</span></h3>
                                     </div>
                                 </div>

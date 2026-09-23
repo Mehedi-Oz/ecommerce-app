@@ -77,6 +77,23 @@
                                 class="@if (request()->routeIs('admin.orders.*')) active @endif">Manage</a></li>
                     </ul>
                 </li>
+                <li class="@if (request()->routeIs('admin.hero-sliders.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.flash-deals.*')) active @endif"> <a
+                        class="has-arrow waves-effect waves-dark @if (request()->routeIs('admin.hero-sliders.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.flash-deals.*')) active @endif"
+                        href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span
+                            class="hide-menu">Homepage</span></a>
+                    <ul aria-expanded="false"
+                        class="collapse @if (request()->routeIs('admin.hero-sliders.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.flash-deals.*')) in @endif">
+                        <li><a href="{{ route('admin.hero-sliders.index') }}"
+                                class="@if (request()->routeIs('admin.hero-sliders.*')) active @endif">Sliders</a></li>
+                        <li><a href="{{ route('admin.banners.index') }}"
+                                class="@if (request()->routeIs('admin.banners.*')) active @endif">Banners</a></li>
+                        <li><a href="{{ route('admin.flash-deals.index') }}"
+                                class="@if (request()->routeIs('admin.flash-deals.*')) active @endif">Flash Deals</a></li>
+                    </ul>
+                </li>
+                <li><a class="waves-effect waves-dark" href="{{ route('home') }}" target="_blank" rel="noopener"
+                        aria-expanded="false"><i class="ti-world"></i><span
+                            class="hide-menu">View Store</span></a></li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

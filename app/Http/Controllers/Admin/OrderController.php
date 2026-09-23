@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-
     public function index(): View
     {
         $orders = Order::with(['user', 'details'])->latest()->paginate(20);
@@ -63,6 +62,28 @@ class OrderController extends Controller
             if (($cancelling || $returning) && $reserved && $firstTerminal) {
                 foreach ($order->details as $detail) {
                     Product::query()->whereKey($detail->product_id)->increment('stock_amount', $detail->product_quantity);
+                }
+            }
+
+            $delivering = ($data['delivery_status'] ?? null) === 'delivered'
+                && ($original['delivery_status'] ?? null) !== 'delivered'
+                && ($original['order_status'] ?? null) !== 'cancelled';
+            $returningDelivered = ($data['delivery_status'] ?? null) === 'returned'
+                && ($original['delivery_status'] ?? null) === 'delivered';
+
+            if ($delivering) {
+                foreach ($order->details as $detail) {
+                    Product::query()->whereKey($detail->product_id)->increment('sales_count', $detail->product_quantity);
+                }
+            }
+
+            if ($returningDelivered) {
+                foreach ($order->details as $detail) {
+                    $product = Product::query()->whereKey($detail->product_id)->first();
+
+                    if ($product !== null) {
+                        $product->decrement('sales_count', min($detail->product_quantity, $product->sales_count));
+                    }
                 }
             }
 

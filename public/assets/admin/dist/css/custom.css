@@ -40,6 +40,60 @@
     border-color: #dc3545 !important;
 }
 
+/* Dashboard stat cards */
+.stat-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 1.15rem;
+}
+
+.stat-label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #67757c;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* Dashboard charts */
+.chart-area,
+.chart-donut {
+    height: 300px;
+}
+
+.chart-donut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Compact square icon buttons used in dashboard tables/lists */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+/* Dashboard list rows: keep the name row truncating instead of wrapping */
+.dash-item-main {
+    min-width: 0;
+}
+
 /* Admin data tables: keep every column reachable on small screens */
 .table-responsive {
     overflow-x: auto;

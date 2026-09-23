@@ -3,9 +3,12 @@
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FlashDealController;
+use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -45,6 +48,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::patch('/categories/{category}/status', [CategoryController::class, 'toggleStatus'])->name('categories.status');
+    Route::patch('/categories/{category}/featured', [CategoryController::class, 'toggleFeatured'])->name('categories.featured');
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
     /** SubCategories Management Routes */
@@ -63,6 +67,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
     Route::put('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
     Route::patch('/brands/{brand}/status', [BrandController::class, 'toggleStatus'])->name('brands.status');
+    Route::patch('/brands/{brand}/featured', [BrandController::class, 'toggleFeatured'])->name('brands.featured');
     Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
 
     /** Units Management Routes */
@@ -91,4 +96,31 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+    /** Hero Sliders Management Routes */
+    Route::get('/hero-sliders', [HeroSliderController::class, 'index'])->name('hero-sliders.index');
+    Route::get('/hero-sliders/create', [HeroSliderController::class, 'create'])->name('hero-sliders.create');
+    Route::post('/hero-sliders', [HeroSliderController::class, 'store'])->name('hero-sliders.store');
+    Route::get('/hero-sliders/{heroSlider}/edit', [HeroSliderController::class, 'edit'])->name('hero-sliders.edit');
+    Route::put('/hero-sliders/{heroSlider}', [HeroSliderController::class, 'update'])->name('hero-sliders.update');
+    Route::patch('/hero-sliders/{heroSlider}/status', [HeroSliderController::class, 'toggleStatus'])->name('hero-sliders.status');
+    Route::delete('/hero-sliders/{heroSlider}', [HeroSliderController::class, 'destroy'])->name('hero-sliders.destroy');
+
+    /** Banners Management Routes */
+    Route::get('/banners', [BannerController::class, 'index'])->name('banners.index');
+    Route::get('/banners/create', [BannerController::class, 'create'])->name('banners.create');
+    Route::post('/banners', [BannerController::class, 'store'])->name('banners.store');
+    Route::get('/banners/{banner}/edit', [BannerController::class, 'edit'])->name('banners.edit');
+    Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
+    Route::patch('/banners/{banner}/status', [BannerController::class, 'toggleStatus'])->name('banners.status');
+    Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+
+    /** Flash Deals Management Routes */
+    Route::get('/flash-deals', [FlashDealController::class, 'index'])->name('flash-deals.index');
+    Route::get('/flash-deals/create', [FlashDealController::class, 'create'])->name('flash-deals.create');
+    Route::post('/flash-deals', [FlashDealController::class, 'store'])->name('flash-deals.store');
+    Route::get('/flash-deals/{flashDeal}/edit', [FlashDealController::class, 'edit'])->name('flash-deals.edit');
+    Route::put('/flash-deals/{flashDeal}', [FlashDealController::class, 'update'])->name('flash-deals.update');
+    Route::patch('/flash-deals/{flashDeal}/status', [FlashDealController::class, 'toggleStatus'])->name('flash-deals.status');
+    Route::delete('/flash-deals/{flashDeal}', [FlashDealController::class, 'destroy'])->name('flash-deals.destroy');
 });

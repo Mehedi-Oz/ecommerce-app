@@ -152,6 +152,23 @@
                             <x-admin.input-error :for="'remove_gallery_images'" />
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Homepage Tags</label>
+                            @php($selectedTags = old('tags', $product->tags->pluck('slug')->all()))
+                            <div class="d-flex gap-3">
+                                @foreach ($tags as $tag)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="tags[]"
+                                            value="{{ $tag->slug }}" id="tag_{{ $tag->slug }}"
+                                            @checked(in_array($tag->slug, $selectedTags))>
+                                        <label class="form-check-label" for="tag_{{ $tag->slug }}">{{ $tag->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <small class="form-text text-muted">Special Offer and Top Rated sections use these tags.</small>
+                            <x-admin.input-error :for="'tags'" />
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <x-admin.input-select name="featured_status" :label="__('Featured Status')"

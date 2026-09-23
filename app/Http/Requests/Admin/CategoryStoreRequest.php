@@ -25,6 +25,7 @@ class CategoryStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
             'description' => ['nullable', 'string', 'max:2000'],
+            'is_featured' => ['sometimes', 'boolean'],
             'status' => ['sometimes', 'in:published,unpublished'],
         ];
     }

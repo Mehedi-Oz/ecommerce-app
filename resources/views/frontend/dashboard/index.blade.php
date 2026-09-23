@@ -32,7 +32,7 @@
                 <div class="col-lg-9 col-12">
                     <div class="checkout-sidebar-price-table mt-0 mb-4">
                         <div class="button d-flex align-items-center gap-3">
-                            @if ($user->profile_photo_path)
+                            @if ($user->image)
                                 <img src="{{ $photoUrl }}" alt="{{ $user->name }}" class="dashboard-avatar-img">
                             @else
                                 <span class="dashboard-avatar">{{ strtoupper(mb_substr($user->name, 0, 1)) }}</span>

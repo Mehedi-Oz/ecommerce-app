@@ -58,7 +58,10 @@
             return;
         }
 
-        const finaleDate = new Date("February 15, 2023 00:00:00").getTime();
+        const offerContent = document.querySelector('.offer-content[data-ends-at]');
+        const finaleDate = offerContent && offerContent.dataset.endsAt
+            ? new Date(offerContent.dataset.endsAt).getTime()
+            : new Date('February 15, 2023 00:00:00').getTime();
 
         const pad = (value) => (value <= 9 ? `0${value}` : `${value}`);
 

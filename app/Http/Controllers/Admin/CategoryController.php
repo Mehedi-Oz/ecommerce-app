@@ -19,9 +19,7 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-
-        Category::create($data);
+        Category::create($request->validated());
         NotificationService::created();
 
         return redirect()->route('admin.categories.index');
@@ -41,9 +39,7 @@ class CategoryController extends Controller
 
     public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
-        $data = $request->validated();
-
-        $category->fill($data);
+        $category->fill($request->validated());
 
         if (! $category->isDirty()) {
             return redirect()->route('admin.categories.edit', $category);
@@ -67,6 +63,16 @@ class CategoryController extends Controller
     {
         $category->update([
             'status' => $category->status === 'published' ? 'unpublished' : 'published',
+        ]);
+        NotificationService::updated();
+
+        return redirect()->route('admin.categories.index');
+    }
+
+    public function toggleFeatured(Category $category): RedirectResponse
+    {
+        $category->update([
+            'is_featured' => ! $category->is_featured,
         ]);
         NotificationService::updated();
 

@@ -36,6 +36,8 @@ class ProductStoreRequest extends FormRequest
             'gallery_images.*' => ['image', 'mimes:jpg,jpeg,png,webp,gif', 'max:2048'],
             'featured_status' => ['sometimes', 'in:featured,not_featured'],
             'status' => ['sometimes', 'in:published,unpublished'],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['string', 'in:special_offer,top_rated'],
         ];
     }
 }

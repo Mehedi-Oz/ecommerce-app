@@ -17,6 +17,7 @@
                                 <th class="text-nowrap">Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th class="text-nowrap">Featured</th>
                                 <th class="text-nowrap">Status</th>
                                 <th class="text-nowrap">Created At</th>
                                 <th class="text-nowrap">Actions</th>
@@ -42,6 +43,22 @@
                                         @else
                                             <span class="text-muted">&mdash;</span>
                                         @endif
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <form action="{{ route('admin.brands.featured', $brand) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            @if ($brand->is_featured)
+                                                <button type="submit" title="Unfeature brand"
+                                                    class="btn btn-sm text-warning border-0 bg-transparent"><i
+                                                        class="fas fa-star"></i></button>
+                                            @else
+                                                <button type="submit" title="Feature brand"
+                                                    class="btn btn-sm text-muted border-0 bg-transparent"><i
+                                                        class="far fa-star"></i></button>
+                                            @endif
+                                        </form>
                                     </td>
                                     <td class="text-nowrap">
                                         @if ($brand->status === 'published')
@@ -86,7 +103,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">No brands found</td>
+                                    <td colspan="8" class="text-center">No brands found</td>
                                 </tr>
                             @endforelse
                         </tbody>

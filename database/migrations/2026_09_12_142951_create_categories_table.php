@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->enum('status', ['published', 'unpublished'])->default('published');
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }

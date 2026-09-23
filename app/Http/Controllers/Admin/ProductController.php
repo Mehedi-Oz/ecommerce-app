@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
+use App\Models\Tag;
 use App\Models\Unit;
 use App\Services\NotificationService;
 use App\Traits\FileUpload;
@@ -29,16 +30,21 @@ class ProductController extends Controller
             'subCategories' => SubCategory::all(),
             'brands' => Brand::all(),
             'units' => Unit::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
     public function store(ProductStoreRequest $request): RedirectResponse
     {
         $data = $request->validated();
+        $tagSlugs = $data['tags'] ?? [];
+        unset($data['tags']);
 
         $data['featured_image'] = $this->uploadFile($request->file('featured_image'), 'products');
 
         $product = Product::create($data);
+
+        $product->tags()->sync($this->tagIdsForSlugs($tagSlugs));
 
         $this->uploadGalleryImages($product, $request->file('gallery_images', []));
 
@@ -63,7 +69,7 @@ class ProductController extends Controller
 
     public function edit(Product $product): View
     {
-        $product->load('images');
+        $product->load(['images', 'tags']);
 
         return view('admin.products.edit', [
             'product' => $product,
@@ -71,12 +77,15 @@ class ProductController extends Controller
             'subCategories' => SubCategory::all(),
             'brands' => Brand::all(),
             'units' => Unit::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
     public function update(ProductUpdateRequest $request, Product $product): RedirectResponse
     {
         $data = $request->validated();
+        $tagSlugs = $data['tags'] ?? null;
+        unset($data['tags']);
 
         $remainingGalleryCount = $product->images()
             ->whereNotIn('id', $request->input('remove_gallery_images', []))
@@ -100,6 +109,10 @@ class ProductController extends Controller
 
         if ($product->isDirty()) {
             $product->save();
+        }
+
+        if ($tagSlugs !== null) {
+            $product->tags()->sync($this->tagIdsForSlugs($tagSlugs));
         }
 
         $this->removeGalleryImages($product, $request->input('remove_gallery_images', []));
@@ -176,5 +189,18 @@ class ProductController extends Controller
             $this->deleteFile($image->image_path);
             $image->delete();
         }
+    }
+
+    /**
+     * @param  array<int, string>  $slugs
+     * @return array<int, int>
+     */
+    private function tagIdsForSlugs(array $slugs): array
+    {
+        if ($slugs === []) {
+            return [];
+        }
+
+        return Tag::query()->whereIn('slug', $slugs)->pluck('id')->all();
     }
 }

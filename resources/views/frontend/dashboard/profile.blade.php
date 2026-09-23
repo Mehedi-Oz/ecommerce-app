@@ -59,7 +59,7 @@
                                                 <div class="flex-grow-1">
                                                     <input type="file" name="photo" accept="image/*" class="form-control">
                                                     <small class="text-muted text-sm">{{ __('(JPG, PNG or WebP, max 2MB.)') }}</small>
-                                                    @if ($user->profile_photo_path)
+                                                    @if ($user->image)
                                                         <div class="form-check mt-1">
                                                             <input class="form-check-input" type="checkbox"
                                                                 name="remove_photo" id="remove-photo" value="1">

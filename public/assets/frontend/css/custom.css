@@ -9,3 +9,61 @@ ul.pagination {
     padding-left: 0;
     list-style: none;
 }
+
+/* Equal-height product cards (home + shop grids).
+   Columns stretch to the tallest card in the row, images share one
+   aspect ratio, titles reserve two lines, and the price sits at the
+   bottom of every card. */
+.trending-product .row > [class*='col-'],
+.special-offer .row > [class*='col-'],
+#nav-grid .row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-product {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.single-product .product-image {
+    aspect-ratio: 1 / 1;
+    background: #f6f7fb;
+}
+
+.single-product .product-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.single-product .product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.single-product .product-info .category {
+    min-height: 20px;
+}
+
+.single-product .product-info .title {
+    min-height: 45px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.single-product .product-info .price {
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 991px) {
+    .single-product .product-info .title {
+        min-height: 42px;
+    }
+}

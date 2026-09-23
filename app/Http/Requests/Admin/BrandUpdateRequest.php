@@ -26,6 +26,7 @@ class BrandUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:255', 'unique:brands,name,'.$this->route('brand')->id],
             'description' => ['nullable', 'string', 'max:2000'],
             'image' => ['sometimes', 'nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:2048'],
+            'is_featured' => ['sometimes', 'boolean'],
             'status' => ['sometimes', 'in:published,unpublished'],
         ];
     }

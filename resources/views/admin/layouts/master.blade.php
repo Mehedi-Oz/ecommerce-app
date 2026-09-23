@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/admin/images/favicon.png') }}">
-    <title>@yield('title', 'Elite Admin Template - The Ultimate Multipurpose admin template')</title>
+    <title>Admin | @yield('title', 'Dashboard')</title>
     <!-- This page CSS -->
     @include('admin.layouts.partials.styles')
     @stack('styles')

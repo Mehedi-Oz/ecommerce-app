@@ -1,58 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ecommerce App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-featured ecommerce application built with Laravel, Livewire, and Tailwind CSS with a customer storefront, online checkout, and a separate admin panel for catalogue, homepage content, and order management.
 
-## About Laravel
+## Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Layer         | Technology                      |
+| ------------- | ------------------------------- |
+| Backend       | PHP 8.3+, Laravel 13            |
+| Frontend      | Livewire 3, Blade, Tailwind CSS |
+| Auth          | Jetstream / Fortify (2FA, Passkeys) |
+| Cart          | LaraCart                        |
+| Payments      | SSLCommerz                      |
+| Notifications | PHP Flasher (Notyf)             |
+| Database      | MySQL                           |
+| Testing       | Pest                            |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Storefront
 
-## Learning Laravel
+- CMS-driven homepage with hero sliders, banners, featured categories/brands, and curated product sections
+- Product catalogue with category filtering, sorting, and product details
+- Session-based shopping cart
+- Checkout with cash-on-delivery and SSLCommerz online payments
+- Customer accounts with order history, order tracking, and profile management
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Admin Panel (`/admin`)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Sales dashboard with revenue, orders, low-stock, and top-product insights
+- Catalogue management: categories, sub-categories, brands, units, and products
+- Homepage management: hero sliders, banners, and flash deals
+- Order management with status updates
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Authentication
 
-## Agentic Development
+- Registration, login, password reset, and email verification
+- Two-factor authentication and passkeys
+- Separate admin guard with dedicated login
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Getting Started
+
+### Prerequisites
+
+- **PHP** ^8.3 (8.4 recommended)
+- **Composer** ≥ 2
+- **Node.js** ≥ 24 (see `.nvmrc`)
+- **MySQL** (or any Laravel-supported database)
+- **Laravel Herd** (recommended) or any local server (Valet, Sail, etc.)
+
+### Installation
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Mehedi-Oz/ecommerce-app.git
+cd ecommerce-app
+composer setup
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Then seed the database:
 
-## Contributing
+```bash
+php artisan db:seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Default credentials:
 
-## Code of Conduct
+| Role  | Email             | Password   |
+| ----- | ----------------- | ---------- |
+| Admin | `admin@gmail.com` | `12345678` |
+| User  | `user@gmail.com`  | `12345678` |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Running Locally
 
-## Security Vulnerabilities
+With Herd, the app is available at `https://ecommerce-app.test`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Without Herd:
+
+```bash
+composer run dev
+```
+
+## Payments
+
+Add your SSLCommerz credentials to `.env`:
+
+```env
+SSLCOMMERZ_STORE_ID=your_store_id
+SSLCOMMERZ_STORE_PASSWORD=your_store_password
+SSLCOMMERZ_SANDBOX=true
+SSLCOMMERZ_CURRENCY=BDT
+```
+
+Use live credentials and set `SSLCOMMERZ_SANDBOX=false` for production.
+
+## Project Structure
+
+```
+app/
+├── Actions/            # Fortify & Jetstream action classes
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/      # Admin panel controllers (incl. HeroSlider, Banner, FlashDeal)
+│   │   └── Frontend/   # Storefront controllers (Ecommerce, Cart, Checkout, Dashboard)
+│   ├── Middleware/
+│   └── Requests/       # Form request validation (incl. Admin/*Store/Update requests)
+├── Models/             # Eloquent models (Category, SubCategory, Brand, Unit,
+│                       #   Product, ProductImage, Tag, HeroSlider, Banner,
+│                       #   FlashDeal, Order, Admin, User)
+├── Providers/          # Service providers (App, Fortify, Jetstream)
+├── Services/           # Business logic (SSLCommerz, notifications)
+├── Traits/
+├── Rules/
+└── View/
+
+database/
+├── factories/          # Factories for all catalogue + CMS models
+├── migrations/         # Includes hero_sliders, banners, tags, flash_deals tables
+└── seeders/            # Per-domain seeders + DatabaseSeeder orchestrator
+
+resources/views/
+├── admin/              # Admin Blade templates (dashboard, categories,
+│                       #   subcategories, brands, units, products, orders,
+│                       #   hero-sliders, banners, flash-deals, auth)
+├── frontend/           # Storefront Blade templates (home, products, carts,
+│                       #   checkout, dashboard)
+├── layouts/            # Layout templates
+└── auth/               # Authentication views
+
+routes/
+├── web.php             # Storefront routes
+├── admin.php           # Admin panel routes
+├── api.php             # API routes (default Sanctum stub)
+└── console.php         # Console commands
+
+tests/Feature/         # Pest tests incl. HomepageCms, HomePageContent,
+                       #   ProductSorting, ProductFactory, CatalogSeeder,
+                       #   AdminDashboard, AdminSidebar, PageTitles, UserSeeder
+```
+
+## Testing
+
+```bash
+php artisan test --compact
+```
+
+## Code Style
+
+```bash
+vendor/bin/pint --dirty
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](./LICENSE.md).
