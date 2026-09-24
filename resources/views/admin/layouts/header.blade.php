@@ -30,14 +30,6 @@
                 <!-- This is  -->
                 <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                 <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
-                <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== -->
-                <li class="nav-item">
-                    <form class="app-search d-none d-md-block d-lg-block">
-                        <input type="text" class="form-control" placeholder="Search &amp; enter">
-                    </form>
-                </li>
             </ul>
             <!-- ============================================================== -->
             <!-- User profile and search -->
@@ -47,18 +39,18 @@
                 <!-- User Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown u-pro">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets/admin/images/users/1.jpg') }}" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                    @php
+                        $adminUser = auth('admin')->user();
+                        $adminAvatar = $adminUser?->image
+                            ? asset($adminUser->image)
+                            : 'https://ui-avatars.com/api/?name='.urlencode($adminUser?->name).'&color=7F9CF5&background=EBF4FF';
+                    @endphp
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ $adminAvatar }}" alt="user" class=""> <span class="hidden-md-down">{{ $adminUser?->name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-end animated flipInY">
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                        <a href="{{ route('admin.profile.edit') }}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                        <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                        <!-- text-->
-                        <div class="dropdown-divider"></div>
-                        <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                        <a href="{{ route('admin.password.edit') }}" class="dropdown-item"><i class="ti-settings"></i> Change Password</a>
                         <!-- text-->
                         <div class="dropdown-divider"></div>
                         <!-- text-->

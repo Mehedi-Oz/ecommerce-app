@@ -88,3 +88,56 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+    <style>
+        .password-toggle-wrapper {
+            position: relative;
+        }
+        .password-toggle-wrapper input {
+            padding-right: 40px;
+        }
+        .password-toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .password-toggle-btn.showing {
+            color: #0167f3;
+        }
+    </style>
+@endpush
+
+@push('scripts')
+    <script>
+        (function () {
+            document.querySelectorAll('input[type="password"]').forEach(function (input) {
+                var wrapper = document.createElement('div');
+                wrapper.className = 'password-toggle-wrapper';
+                input.after(wrapper);
+                wrapper.appendChild(input);
+
+                var btn = document.createElement('button');
+                btn.setAttribute('type', 'button');
+                btn.className = 'password-toggle-btn';
+                btn.setAttribute('aria-label', 'Show password');
+                btn.innerHTML = '<i class="lni lni-eye"></i>';
+                btn.addEventListener('click', function () {
+                    var show = input.getAttribute('type') === 'password';
+                    input.setAttribute('type', show ? 'text' : 'password');
+                    btn.classList.toggle('showing', show);
+                    btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+                });
+                wrapper.appendChild(btn);
+            });
+        })();
+    </script>
+@endpush

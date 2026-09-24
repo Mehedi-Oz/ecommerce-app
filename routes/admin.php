@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\FlashDealController;
 use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UnitController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::get('dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+    /** Profile Management Routes */
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/password', [ProfileController::class, 'editPassword'])->name('password.edit');
+    Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
     /** Categories Management Routes */
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

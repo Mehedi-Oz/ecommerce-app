@@ -14,15 +14,8 @@ class Admin extends Authenticatable
 
     use Notifiable;
 
-    public const DEFAULT_AVATAR = 'defaults/avatar.png';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'avatar',
+        'image',
         'name',
         'email',
         'password',
