@@ -37,7 +37,7 @@ class ProductStoreRequest extends FormRequest
             'featured_status' => ['sometimes', 'in:featured,not_featured'],
             'status' => ['sometimes', 'in:published,unpublished'],
             'tags' => ['nullable', 'array'],
-            'tags.*' => ['string', 'in:special_offer,top_rated'],
+            'tags.*' => ['string', 'in:special_offer'],
         ];
     }
 }

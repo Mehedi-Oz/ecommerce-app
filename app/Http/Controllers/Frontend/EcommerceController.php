@@ -43,9 +43,9 @@ class EcommerceController extends Controller
             ->take(3)
             ->get();
 
-        $topRated = Product::query()
+        $topDiscounted = Product::query()
             ->published()
-            ->byTag(Tag::TOP_RATED)
+            ->topDiscounted()
             ->take(3)
             ->get();
 
@@ -73,7 +73,7 @@ class EcommerceController extends Controller
             'specialOfferProducts' => $specialOfferProducts,
             'bestSellers' => $bestSellers,
             'newArrivals' => $newArrivals,
-            'topRated' => $topRated,
+            'topDiscounted' => $topDiscounted,
             'heroSliders' => $heroSliders,
             'heroTopBanner' => $heroTopBanner,
             'heroBottomBanner' => $heroBottomBanner,

@@ -124,7 +124,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <small class="form-text text-muted">Special Offer and Top Rated sections use these tags.</small>
+                            <small class="form-text text-muted">Special Offer section uses these tags.</small>
                             <x-admin.input-error :for="'tags'" />
                         </div>
 

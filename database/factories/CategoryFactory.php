@@ -47,6 +47,7 @@ class CategoryFactory extends Factory
         return [
             'name' => static::uniqueStarTechName(),
             'description' => fake()->sentence(),
+            'image' => null,
             'status' => 'published',
             'is_featured' => false,
         ];

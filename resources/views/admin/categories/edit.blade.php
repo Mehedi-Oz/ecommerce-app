@@ -10,7 +10,7 @@
                     <h4 class="card-title">Update Category</h4>
                     <h6 class="card-subtitle">Edit the details below to update the category</h6>
                     <form class="form-horizontal p-t-20" method="POST"
-                        action="{{ route('admin.categories.update', $category) }}">
+                        action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -19,6 +19,18 @@
 
                         <x-admin.input-text-area name="description" :label="__('Description')"
                             placeholder="e.g. Mobile phones, laptops and accessories" :value="$category->description" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            @if ($category->image)
+                                <x-admin.image-preview :src="$category->image" class="mb-2" />
+                            @endif
+                            <div class="@error('image') is-dropify-invalid @enderror">
+                                <input type="file" class="dropify" name="image"
+                                    data-default-file="{{ $category->image ? asset($category->image) : '' }}" />
+                            </div>
+                            <x-admin.input-error :for="'image'" />
+                        </div>
 
                         <x-admin.input-select name="is_featured" :label="__('Featured')" :selected="old('is_featured', (string) (int) $category->is_featured)">
                             <option value="1" @selected(old('is_featured', (string) (int) $category->is_featured) === '1')>Yes</option>

@@ -9,13 +9,22 @@
                 <div class="card-body">
                     <h4 class="card-title">Add a New Category</h4>
                     <h6 class="card-subtitle">Fill in the details below to create a new category</h6>
-                    <form class="form-horizontal p-t-20" action="{{ route('admin.categories.store') }}" method="POST">
+                    <form class="form-horizontal p-t-20" action="{{ route('admin.categories.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
 
                         <x-admin.input-text name="name" :label="__('Name')" placeholder="e.g. Electronics" required />
 
                         <x-admin.input-text-area name="description" :label="__('Description')"
                             placeholder="e.g. Mobile phones, laptops and accessories" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            <div class="@error('image') is-dropify-invalid @enderror">
+                                <input type="file" class="dropify" name="image" />
+                            </div>
+                            <x-admin.input-error :for="'image'" />
+                        </div>
 
                         <x-admin.input-select name="is_featured" :label="__('Featured')" :selected="old('is_featured', '0')">
                             <option value="1" @selected(old('is_featured') === '1')>Yes</option>

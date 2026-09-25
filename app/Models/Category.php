@@ -11,9 +11,12 @@ class Category extends Model
 {
     use HasFactory;
 
+    public const MAX_FEATURED = 6;
+
     protected $fillable = [
         'name',
         'description',
+        'image',
         'status',
         'is_featured',
     ];
@@ -43,5 +46,16 @@ class Category extends Model
     public function scopeFeatured(Builder $query): Builder
     {
         return $query->where('is_featured', true);
+    }
+
+    public static function featuredLimitReached(?Category $except = null): bool
+    {
+        $query = static::featured();
+
+        if ($except) {
+            $query->where('id', '!=', $except->id);
+        }
+
+        return $query->count() >= static::MAX_FEATURED;
     }
 }

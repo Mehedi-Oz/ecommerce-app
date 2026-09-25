@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th class="text-nowrap">#</th>
+                                <th class="text-nowrap">Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th class="text-nowrap">Featured</th>
@@ -26,6 +27,14 @@
                             @forelse ($categories as $category)
                                 <tr>
                                     <td class="text-nowrap">{{ $loop->iteration }}</td>
+                                    <td class="text-nowrap">
+                                        @if ($category->image)
+                                            <x-admin.image-preview :src="$category->image"
+                                                style="width: 50px; height: 50px; object-fit: cover;" />
+                                        @else
+                                            <span class="text-muted">&mdash;</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $category->name }}</td>
                                     <td>
                                         @if ($category->description)
@@ -94,7 +103,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">No categories found</td>
+                                    <td colspan="8" class="text-center">No categories found</td>
                                 </tr>
                             @endforelse
                         </tbody>

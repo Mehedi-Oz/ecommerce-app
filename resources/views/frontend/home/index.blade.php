@@ -150,7 +150,7 @@
                                 </li>
                             </ul>
                             <div class="images">
-                                <img src="{{ asset('assets/frontend/images/featured-categories/fetured-item-1.png') }}"
+                                <img src="{{ $category->image ? asset($category->image) : asset('assets/frontend/images/featured-categories/fetured-item-1.png') }}"
                                     alt="{{ $category->name }}">
                             </div>
                         </div>
@@ -552,9 +552,9 @@
 
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
-                    <h4 class="list-title">{{ __('Top Rated') }}</h4>
+                    <h4 class="list-title">{{ __('Top Discounts') }}</h4>
 
-                    @forelse ($topRated as $product)
+                    @forelse ($topDiscounted as $product)
                         <div class="single-list">
                             <div class="list-image">
                                 <a href="{{ route('products.show', $product) }}"><img
@@ -566,6 +566,9 @@
                                     <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                 </h3>
                                 <span>৳ {{ number_format($product->selling_amount, 2) }}</span>
+                                @if ($product->regular_amount > $product->selling_amount)
+                                    <span class="badge bg-danger ms-1 fw-normal align-middle" style="font-size: 0.5rem; padding: 0.05em 0.2em;">-{{ round(($product->regular_amount - $product->selling_amount) / $product->regular_amount * 100) }}%</span>
+                                @endif
                             </div>
                         </div>
                     @empty

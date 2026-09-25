@@ -94,6 +94,13 @@ class Product extends Model
         return $query->latest();
     }
 
+    public function scopeTopDiscounted(Builder $query): Builder
+    {
+        return $query->where('regular_amount', '>', 0)
+            ->whereColumn('selling_amount', '<', 'regular_amount')
+            ->orderByRaw('(regular_amount - selling_amount) / regular_amount DESC');
+    }
+
     public function scopeFeatured(Builder $query): Builder
     {
         return $query->where('featured_status', 'featured');

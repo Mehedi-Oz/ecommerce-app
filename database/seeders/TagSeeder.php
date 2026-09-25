@@ -10,6 +10,5 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         Tag::firstOrCreate(['slug' => Tag::SPECIAL_OFFER], ['name' => 'Special Offer']);
-        Tag::firstOrCreate(['slug' => Tag::TOP_RATED], ['name' => 'Top Rated']);
     }
 }

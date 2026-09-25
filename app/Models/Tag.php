@@ -12,8 +12,6 @@ class Tag extends Model
 
     public const SPECIAL_OFFER = 'special_offer';
 
-    public const TOP_RATED = 'top_rated';
-
     protected $fillable = [
         'name',
         'slug',
